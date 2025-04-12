@@ -57,7 +57,7 @@ const Nav = ({ progress }: NavbarProps) => {
           role="button"
           className="border border-transparent rounded-full text-white px-6 py-2 transition"
         >
-          Contribute
+          Contact Us
         </div>
         {/* <div
           role="button"
