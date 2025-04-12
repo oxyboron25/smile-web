@@ -32,7 +32,7 @@ const About = () => {
                 <div className="hidden bg-[#001612] flex flex-col justify-center lg:h-[66vh]">
                     <Mentors />
                 </div>
-                <div className="lg:h-[26vh] text-white flex flex-col px-10 lg:px-40 justify-center items-center lg:items-start lg:text-left text-center py-20 relative">
+                {/* <div className="lg:h-[26vh] text-white flex flex-col px-10 lg:px-40 justify-center items-center lg:items-start lg:text-left text-center py-20 relative">
                     <div className="absolute top-0 h-full flex lg:hidden">
                         <Image src={bg} alt="background" className=" w-[100vw] brightness-75 h-full object-cover object-left-bottom" />
                     </div>
@@ -41,7 +41,7 @@ const About = () => {
                     <div role="button" className={headingFont.className + " py-2 px-5 border-[1px] border-white rounded-full w-fit hover:bg-white hover:text-black transition-all ease-in-out text-xl font-light hover:font-semibold z-20"}>
                         Donate Now
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     );
