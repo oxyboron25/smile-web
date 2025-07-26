@@ -1,8 +1,5 @@
 'use client'
-import Kavan from '@/public/founders/Kavan.png'
-import Navin from '@/public/founders/Navin.png'
-import Ritien from '@/public/founders/Ritien.png'
-import Rishi from '@/public/founders/Rishi.png'
+
 import styles from './style.module.scss'
 
 import { ArrowLeftCircle, ArrowRightCircle } from 'lucide-react';
@@ -20,12 +17,12 @@ const founders = [
     {
         name : 'Ritien Mohan',
         quote : "“Mental health in India is deeply stigmatized, with students across campuses lacking structured support. Seeing close friends struggle and recognizing this gap nationwide, I felt compelled to act. To create lasting change, I co-founded SMILE.”",
-        image : Ritien
+        image : '/Founders/Ritien.png'
     },
     {
         name : 'Navin Venkat',
         quote : "“Mental health in India is heavily stigmatized, especially among students trapped in toxic coaching cultures. Experiencing this firsthand during JEE prep, I only grasped its importance in my third year. To bridge the support gap on campus, I co-founded SMILE with Ritien Mohan.”",
-        image : Navin
+        image : '/Founders/Navin.png'
     },
     
     // {
@@ -100,7 +97,14 @@ const FounderElement = ({i}) => {
                 </div>
             </div>
             <div className='lg:w-3/12'>
-                <Image src={founders[i].image} alt='Founder Image' className='w-12/12 object-contain' />
+                <Image 
+  src={founders[i].image} 
+  alt='Founder Image' 
+  width={300} 
+  height={300} 
+  className='object-contain' 
+/>
+
             </div>
         </div>
     );
