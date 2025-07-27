@@ -1,8 +1,9 @@
 'use client'
-import Kavan from '@/public/founders/Kavan.png'
+// import Kavan from '@/public/founders/Kavan.png'
 import Navin from '@/public/founders/Navin.png'
 import Ritien from '@/public/founders/Ritien.png'
-import Rishi from '@/public/founders/Rishi.png'
+import Manav from '@/public/founders/Manav.png'
+// import Rishi from '@/public/founders/Rishi.png'
 import styles from './style.module.scss'
 
 import { ArrowLeftCircle, ArrowRightCircle } from 'lucide-react';
@@ -26,6 +27,11 @@ const founders = [
         name : 'Navin Venkat',
         quote : "“Mental health in India is heavily stigmatized, especially among students trapped in toxic coaching cultures. Experiencing this firsthand during JEE prep, I only grasped its importance in my third year. To bridge the support gap on campus, I co-founded SMILE with Ritien Mohan.”",
         image : Navin
+    },
+    {
+        name : 'Manav Kanoi',
+        quote : "“I was this close to taking my life – and I didn't even realize how I got there. But I made it out alive – from the kind of darkness I wouldn’t wish on anyone. One day at a time. Today, I want to help others do the same and thus I co-founded SMILE.”",
+        image : Manav
     },
     
     // {
