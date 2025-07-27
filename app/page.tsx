@@ -11,6 +11,8 @@ import Contribute from "./_components/Contribute";
 import { useEffect } from "react";
 import Lenis from "@studio-freight/lenis";
 import Button from "./_components/Start-Your-Branch";
+import OurBranches from "./_components/OurBranches";
+
 
 export default function Home() {
   const {scrollYProgress} = useScroll()
@@ -32,6 +34,7 @@ export default function Home() {
       <Founders />
       <About />
       <Button />
+      <OurBranches />
       {/* <Timeline /> */}
       {/* <Contribute /> */}
       {/* <Contact /> */}
