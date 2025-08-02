@@ -12,6 +12,7 @@ import { useEffect } from "react";
 import Lenis from "@studio-freight/lenis";
 import Button from "./_components/Start-Your-Branch";
 import OurBranches from "./_components/OurBranches";
+import OpenYourBranch from "./_components/openyourbranch";
 
 
 export default function Home() {
@@ -35,6 +36,7 @@ export default function Home() {
       <About />
       <Button />
       <OurBranches />
+      <OpenYourBranch />
       {/* <Timeline /> */}
       {/* <Contribute /> */}
       {/* <Contact /> */}
