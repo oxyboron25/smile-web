@@ -65,6 +65,14 @@ const Nav = ({ progress }: NavbarProps) => {
         >
           Start Your Branch
         </div> */}
+        <Link
+          href="/gallery"
+          role="button"
+          className="border border-transparent rounded-full text-white px-6 py-2 transition"
+    >
+           Gallery
+        </Link>
+
 
         <Link
           href="https://forms.gle/AAf2EazgHWpNGRUF7"
