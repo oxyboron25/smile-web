@@ -5,17 +5,19 @@ import React from 'react';
 const OpenYourBranch = () => {
   return (
     <>
-      <div className="header">Open Your Branch</div>
+      <div className="container">
+        <div className="header">Open Your Branch</div>
 
-      <div className="banner">
-        <h1 className="headline">Ready to Grow?</h1>
-        <button className="cta-button">Get in Touch with Us</button>
-        <p className="footer-text">
-          For any queries regarding expansion reach out to:{' '}
-          <a href="mailto:expansion@smile-global.org">
-            expansion@smile-global.org
-          </a>
-        </p>
+        <div className="banner">
+          <h1 className="headline">Ready to Grow?</h1>
+          <button className="cta-button">Get in Touch with Us</button>
+          <p className="footer-text">
+            For any queries regarding expansion reach out to:{' '}
+            <a href="mailto:expansion@smile-global.org">
+              expansion@smile-global.org
+            </a>
+          </p>
+        </div>
       </div>
 
       <style jsx>{`
@@ -29,29 +31,33 @@ const OpenYourBranch = () => {
           background-color: #00211c;
         }
 
-        .header {
-          color: white;
-          padding: 2rem;
-          font-size: 1.75rem;
-          font-weight: bold;
-          text-align: center;
-        }
-
-        .banner {
+        .container {
           width: 90%;
           max-width: 1440px;
           margin: 0 auto;
+        }
+
+        .header {
+          color: white;
+          padding-top: 4rem;
+          font-size: 2.1rem; 
+          font-weight: bold;
+          text-align: left;
+        }
+
+        .banner {
           background: white;
           clip-path: polygon(0 0, 100% 0, 90% 50%, 100% 100%, 0% 100%);
           padding: 4rem 2rem;
           position: relative;
           box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
           opacity: 1;
-          text-align: center;
+          text-align: left;
+          margin-top: 2rem;
         }
 
         .headline {
-          font-size: 2.5rem;
+          font-size: 5rem;
           color: #5a9e94;
           margin-bottom: 2rem;
           font-weight: 700;
@@ -114,7 +120,7 @@ const OpenYourBranch = () => {
           }
 
           .header {
-            font-size: 1.5rem;
+            font-size: 2rem; /* optional mobile font-size */
           }
         }
       `}</style>
@@ -123,3 +129,6 @@ const OpenYourBranch = () => {
 };
 
 export default OpenYourBranch;
+
+
+
