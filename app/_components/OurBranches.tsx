@@ -78,7 +78,7 @@ export default function OurBranches() {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <h2 className="text-white text-4xl font-bold text-center mb-12">
+      <h2 className="text-white text-4xl font-bold text-left px-12 md:px-20 mb-12">
         Our Branches
       </h2>
 
