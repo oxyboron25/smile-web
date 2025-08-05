@@ -36,7 +36,7 @@ export default function OurBranches() {
     },
     {
       name: "YALE Chapter",
-      status: "active",
+      status: "coming-soon",
       logo: "/logos/YALE.png",
       link: "#",
       color: "white",
