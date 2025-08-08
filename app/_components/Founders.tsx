@@ -137,19 +137,19 @@ const founders = [
     name: 'Ritien Mohan',
     quote:
       '“Mental health in India is deeply stigmatized, with students across campuses lacking structured support. Seeing close friends struggle and recognizing this gap nationwide, I felt compelled to act. To create lasting change, I co-founded SMILE.”',
-    image: '/Founders/Ritien.png',
+    image: '/founders/Ritien.png',
   },
   {
     name: 'Navin Venkat',
     quote:
       '“Mental health in India is heavily stigmatized, especially among students trapped in toxic coaching cultures. Experiencing this firsthand during JEE prep, I only grasped its importance in my third year. To bridge the support gap on campus, I co-founded SMILE with Ritien Mohan.”',
-    image: '/Founders/Navin.png',
+    image: '/founders/Navin.png',
   },
   {
     name: 'Manav Kanoi',
     quote:
       '“I was this close to taking my life – and I didn\'t even realize how I got there. But I made it out alive – from the kind of darkness I wouldn’t wish on anyone. One day at a time. Today, I want to help others do the same and thus I co-founded SMILE.”',
-    image: '/Founders/Manav.png',
+    image: '/founders/Manav.png',
   },
 ]
 
