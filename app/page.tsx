@@ -35,6 +35,7 @@ export default function Home() {
       <Founders />
       <About />
       <Button />
+      <MentorCarousel />
       <OurBranches />
       <OpenYourBranch />
       {/* <Timeline /> */}
