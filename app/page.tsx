@@ -13,6 +13,7 @@ import Lenis from "@studio-freight/lenis";
 import Button from "./_components/Start-Your-Branch";
 import OurBranches from "./_components/OurBranches";
 import OpenYourBranch from "./_components/openyourbranch";
+import MentorCarousel from "./_components/mentor";
 
 
 export default function Home() {
