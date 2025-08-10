@@ -51,6 +51,14 @@ const MentorCarousel: React.FC = () => {
       window.removeEventListener('resize', updateCarousel);
     };
   }, []);
+  
+useEffect(() => {
+    const interval = setInterval(() => {
+      showNextMentor();
+    }, 3000); // change slide every 3 seconds
+
+    return () => clearInterval(interval); // cleanup on unmount
+  }, []);
 
   return (
     <div className="carousel-container">
