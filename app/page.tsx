@@ -14,6 +14,7 @@ import Button from "./_components/Start-Your-Branch";
 import OurBranches from "./_components/OurBranches";
 import OpenYourBranch from "./_components/openyourbranch";
 import MentorCarousel from "./_components/mentor";
+import Footer from "./_components/footer"
 
 
 export default function Home() {
@@ -42,6 +43,7 @@ export default function Home() {
       {/* <Timeline /> */}
       {/* <Contribute /> */}
       {/* <Contact /> */}
+      <Footer/>
     </main>
   );
 }
