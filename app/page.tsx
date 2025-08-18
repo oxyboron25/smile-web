@@ -14,6 +14,12 @@ import Button from "./_components/Start-Your-Branch";
 import OurBranches from "./_components/OurBranches";
 import OpenYourBranch from "./_components/openyourbranch";
 import MentorCarousel from "./_components/mentor";
+import JoinSmile from "./_components/colleges";
+import GlobalNetworks from "./_components/map";
+import InsightsSection from "./_components/insights";
+import JoinSmile1 from "./_components/joinsmile";
+
+
 
 
 export default function Home() {
@@ -31,14 +37,13 @@ export default function Home() {
   })
   return (
     <main className=" bg-[#001612] h-fit w-[100vw] scroll-smooth">
-      <Nav progress={scrollYProgress} />
-      <Hero />
-      <Founders />
-      <About />
-      <Button />
-      <MentorCarousel />
-      <OurBranches />
-      <OpenYourBranch />
+      
+      <JoinSmile1 />
+      <JoinSmile />
+      <GlobalNetworks />
+      <InsightsSection />
+      
+
       {/* <Timeline /> */}
       {/* <Contribute /> */}
       {/* <Contact /> */}

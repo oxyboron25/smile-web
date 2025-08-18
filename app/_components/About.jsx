@@ -22,7 +22,7 @@ const About = () => {
                     </div>
                     <div className="z-20">
                         <h1 className="xl:text-6xl text-4xl font-bold">Our Mission</h1>
-                        <p className="text-2xl font-extralight pt-5">Build the largest mental health community in India, for providing free resources to individuals in need.</p>
+                        <p className="text-2xl font-extralight pt-5">Build the largest mental health community in the World, for providing free resources to individuals in need.</p>
                     </div>
                     <div className="z-20">
                         <h1 className="xl:text-6xl text-4xl font-bold">Our Vision</h1>
