@@ -18,6 +18,20 @@ import JoinSmile from "./_components/colleges";
 import GlobalNetworks from "./_components/map";
 import InsightsSection from "./_components/insights";
 import JoinSmile1 from "./_components/joinsmile";
+import FAQs from "./_components/faqs";
+import JoinSmileSection from "./_components/joinsmile";
+import SmileNavbar from "./_components/footer";
+import FounderStories from "./_components/founder";
+import MentorsSection from "./_components/mentors";
+import SmileMethodology from "./_components/3ks";
+import StudentsMoveSection from "./_components/students";
+import Homepage from "./_components/top";
+import StigmaSection from "./_components/stigma";
+import Faqs from "./_components/faqs";
+import Navbar from "./_components/navbar";
+import Footer from "./_components/footer";
+
+
 
 
 
@@ -38,10 +52,22 @@ export default function Home() {
   return (
     <main className=" bg-[#001612] h-fit w-[100vw] scroll-smooth">
       
-      <JoinSmile1 />
+      <Homepage />
+      <StigmaSection />
+      <StudentsMoveSection />
+      <SmileMethodology />
+      <JoinSmileSection />
+      <MentorsSection />
       <JoinSmile />
+      <FounderStories />
       <GlobalNetworks />
       <InsightsSection />
+      <Faqs />
+      <Footer />
+
+      
+      
+      
       
 
       {/* <Timeline /> */}
