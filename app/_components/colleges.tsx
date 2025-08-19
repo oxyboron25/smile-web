@@ -3,12 +3,12 @@ import React from "react";
 const JoinSmile: React.FC = () => {
   // Card data
   const cards = [
-    { title: "IIT BOMBAY", img: "/new/iitb.png", btn: "Coming Soon →" },
+    { title: "IIT BOMBAY", img: "/new/image 69 (2).png", btn: "Coming Soon →" },
     { title: "DTU", img: "/new/dtu.png", btn: "Read More →" },
-    { title: "BITS PILANI", img: "/new/bits.png", btn: "Read More→" },
-    { title: "UCLA", img: "/new/The_University_of_California_UCLA 1.png", btn: "Coming Soon →" },
-    { title: "Yale University", img: "/logos/Yale.png", btn: "Coming Soon →" },
-    { title: "Stanford University", img: "/new/stanford1.png", btn: "Coming Soon →" },
+    { title: "BITS PILANI", img: "/new/image 70 (3).png", btn: "Read More →" },
+    { title: "UCLA", img: "/new/The_University_of_California_UCLA 1 (1).png", btn: "Coming Soon →" },
+    { title: "Yale University", img: "/new/YALE (1).png", btn: "Coming Soon →" },
+    { title: "Stanford University", img: "/new/image 21 (1).png", btn: "Coming Soon →" },
   ];
 
   // Color classes repeating [black → white]
@@ -29,10 +29,10 @@ const JoinSmile: React.FC = () => {
 
         {/* Right Heading */}
         <div className="mt-6 md:mt-0 text-center md:text-right">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl mr-0 md:mr-10 text-white">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl mr-0 md:mr-10 text-white font-bold">
             Join SMILE
           </h2>
-          <p className="text-3xl sm:text-4xl lg:text-5xl italic mr-0 md:mr-8 text-white">
+          <p className="text-3xl sm:text-4xl lg:text-5xl italic mr-0 md:mr-8 text-teal-400">
             Empower change
           </p>
         </div>
@@ -79,7 +79,7 @@ const JoinSmile: React.FC = () => {
         .animate-scroll {
           display: flex;
           width: max-content;
-          animation: scroll 20s linear infinite;
+          animation: scroll 25s linear infinite;
         }
       `}</style>
     </section>
@@ -87,6 +87,7 @@ const JoinSmile: React.FC = () => {
 };
 
 export default JoinSmile;
+
 
 
 
