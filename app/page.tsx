@@ -30,6 +30,7 @@ import StigmaSection from "./_components/stigma";
 import Faqs from "./_components/faqs";
 import Navbar from "./_components/navbar";
 import Footer from "./_components/footer";
+import BannerImage from "./_components/banner";
 
 
 
@@ -54,6 +55,7 @@ export default function Home() {
       
       <Homepage />
       <StigmaSection />
+      <BannerImage />
       <StudentsMoveSection />
       <SmileMethodology />
       <JoinSmileSection />

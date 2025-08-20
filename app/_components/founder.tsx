@@ -19,7 +19,7 @@ const FounderStories: React.FC = () => {
         {/* Right Heading */}
         <div className="text-right">
           <h2 className="text-3xl md:text-4xl font-semibold">Our Journey</h2>
-          <p className="text-3xl md:text-4xl italic text-[#4EBCA5]">
+          <p className="text-3xl md:text-5xl italic text-[#4EBCA5]">
             Founder Stories
           </p>
         </div>
@@ -30,19 +30,19 @@ const FounderStories: React.FC = () => {
         {/* Image */}
         <div className="w-full md:w-1/3 flex-shrink-0">
           <img
-            src="/navin.png" // replace with actual image path
+            src="/new/Group 40063 (1).png" // replace with actual image path
             alt="Founder"
-            className="rounded-lg w-full object-cover"
+            className="rounded-lg w-full bg-gray-950 object-cover"
           />
         </div>
 
         {/* Content */}
         <div className="flex-1">
-          <p className="uppercase text-xs font-semibold text-gray-500">
+          <p className="uppercase text-xs font-semibold text-gay-500">
             Co-Founder
           </p>
           <h3 className="text-2xl font-semibold mt-1">Navin Venkat</h3>
-          <p className="text-gray-600 mt-3 text-sm leading-relaxed">
+          <p className="text-gray-600 mt-3 text-lg leading-relaxed">
             “I only grasped the <span className="italic">importance</span> of
             mental health in my third year of college. I wanted to make sure
             that <span className="italic">no-one</span> went through the
@@ -51,14 +51,14 @@ const FounderStories: React.FC = () => {
 
           {/* Buttons */}
           <div className="mt-6 flex items-center gap-4">
-            <button className="flex items-center gap-2 bg-black text-white text-sm px-4 py-2 rounded-full hover:bg-gray-800 transition">
+            <button className="flex items-center gap-2 bg-black text-white  text-xl px-4 py-2 rounded-full hover:bg-gray-800 transition">
               Read More <ExternalLink size={14} />
             </button>
             <div className="flex items-center gap-2 ml-auto">
-              <button className="p-2 rounded-full border border-gray-300 hover:bg-gray-200 transition">
+              <button className="p-2 rounded-full border bg-black text-white border-gray-300 hover:bg-gray-200 transition">
                 <ArrowLeft size={16} />
               </button>
-              <button className="p-2 rounded-full border border-gray-300 hover:bg-gray-200 transition">
+              <button className="p-2 rounded-full border bg-black text-white border-gray-300 hover:bg-gray-200 transition">
                 <ArrowRight size={16} />
               </button>
             </div>

@@ -14,7 +14,7 @@ const Faqs: React.FC = () => {
       {/* Heading */}
       <div className="mb-12">
         <h2 className="text-3xl font-semibold">FAQs</h2>
-        <p className="italic text-2xl text-gray-300">All about SMILE</p>
+        <p className="italic text-5xl font-light text-gray-300">All about SMILE</p>
       </div>
 
       {/* FAQ List */}
