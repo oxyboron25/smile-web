@@ -18,11 +18,13 @@ const JoinSmileSection: React.FC = () => {
 
           {/* Card 1: Browse Activities */}
           <div className="flex flex-col sm:flex-row items-center bg-white rounded-xl p-4 gap-4 relative">
-            <img
-              src="/new/Adobe Express - file (1) 1 (1).png"
-              alt="Activities"
-              className="w-full sm:w-1/2 h-32 sm:h-40 lg:h-48 object-cover rounded-lg"
-            />
+            <div className="w-full sm:w-1/2 aspect-[4/3] min-w-[160px] min-h-[120px]">
+              <img
+                src="/new/Adobe Express - file (1) 1 (2).png"
+                alt="Activities"
+                className="w-full h-full object-cover rounded-lg"
+              />
+            </div>
             <div className="flex-1 flex flex-col justify-center relative pr-10">
               <h3 className="text-lg sm:text-xl font-semibold">
                 Browse our <i>activities</i>
@@ -40,18 +42,18 @@ const JoinSmileSection: React.FC = () => {
           {/* Row: Mentor + Chapter */}
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
             {/* Chapter Card */}
-            <div className="flex-1 bg-black rounded-xl overflow-hidden h-40 sm:h-48">
+            <div className="flex-1 bg-black rounded-xl overflow-hidden aspect-[4/3] min-w-[150px] min-h-[120px]">
               <img
-                src="/new/Frame 8.png"
+                src="/new/Frame 8 (1).png"
                 alt="Chapter"
                 className="w-full h-full object-cover"
               />
             </div>
 
             {/* Mentor Card */}
-            <div className="flex-1 bg-black rounded-xl overflow-hidden h-40 sm:h-48 relative">
+            <div className="flex-1 bg-black rounded-xl overflow-hidden aspect-[4/3] min-w-[150px] min-h-[120px] relative">
               <img
-                src="/new/image 63 (2).png"
+                src="/new/image 63 (3).png"
                 alt="Mentor"
                 className="w-full h-full object-cover"
               />
@@ -76,11 +78,13 @@ const JoinSmileSection: React.FC = () => {
 
           {/* Card 4 */}
           <div className="bg-white rounded-xl p-4 relative flex flex-col gap-3">
-            <img
-              src="/new/Adobe Express - file 1.png"
-              alt="Join SMILE"
-              className="w-full h-40 sm:h-48 object-cover rounded-lg"
-            />
+            <div className="aspect-[16/9] min-w-[180px] min-h-[140px]">
+              <img
+                src="/new/Adobe Express - file 1 (1).png"
+                alt="Join SMILE"
+                className="w-full h-full object-cover rounded-lg"
+              />
+            </div>
             <h3 className="text-lg sm:text-xl font-semibold">
               Leading from the front: Join <i>SMILE</i>
             </h3>
@@ -99,4 +103,5 @@ const JoinSmileSection: React.FC = () => {
 };
 
 export default JoinSmileSection;
+
 

@@ -25,24 +25,27 @@ export default function InsightsSection() {
           {/* Card 1 */}
           <div className="bg-gray-900 rounded-6xl p-6 flex flex-col">
             <img
-              src="/new/image 44.png"
+              src="/new/image 44 (2).png"
               alt="Professional mentors"
-              className="w-full h-48 object-contain mb-4 rounded-2xl"
+              className="w-full aspect-[4/3] object-contain mb-4 rounded-2xl min-w-[200px] min-h-[150px]"
             />
             <p className="text-gray-300 flex-grow">
-              <span className="text-teal-400 font-semibold">Professional mentors</span>{" "}
+              <span className="text-teal-400 font-semibold">
+                Professional mentors
+              </span>{" "}
               amplify impact, open doors to wider networks, and help drive lasting
-              cultural change. <span className="text-teal-400">Professional mentors</span>{" "}
-              amplify impact, open doors to wider networks.
+              cultural change.{" "}
+              <span className="text-teal-400">Professional mentors</span> amplify
+              impact, open doors to wider networks.
             </p>
           </div>
 
           {/* Card 2 */}
           <div className="bg-gray-900 rounded-6xl p-6 flex flex-col">
             <img
-              src="/new/smile.png"
+              src="/new/Logo.png"
               alt="Founders"
-              className="w-full h-48 object-contain mb-4 rounded-2xl"
+              className="w-full aspect-[4/3] object-contain mb-4 rounded-2xl min-w-[200px] min-h-[150px]"
             />
             <p className="text-gray-300 flex-grow">
               <span className="text-teal-400 font-semibold">Founders</span> gain{" "}
@@ -53,13 +56,34 @@ export default function InsightsSection() {
             </p>
           </div>
 
-          {/* Card 3 */}
+          {/* Card 3 with symbols horizontally */}
           <div className="bg-gray-900 rounded-6xl p-6 flex flex-col">
-            <img
-              src="/new/logo.png"
-              alt="Students"
-              className="w-full h-48 object-contain mb-4 rounded-2xl"
-            />
+            {/* ✅ Fixed: Same size image container as others */}
+            <div className="w-full aspect-[4/3] object-contain mb-4 rounded-2xl min-w-[200px] min-h-[150px] flex items-center justify-center bg-gray-900">
+              <div className="flex justify-center items-center space-x-6">
+                <img
+                  src="/new/Group 10 4 (1).png"
+                  alt="Symbol 1"
+                  className="w-16 h-32 object-contain"
+                />
+                <img
+                  src="/new/Group 10 5.png"
+                  alt="Symbol 2"
+                  className="w-16 h-32 object-contain"
+                />
+                <img
+                  src="/new/Group 10 4 (1).png"
+                  alt="Symbol 3"
+                  className="w-16 h-32 object-contain"
+                />
+                <img
+                  src="/new/Group 10 5.png"
+                  alt="Symbol 4"
+                  className="w-16 h-32 object-contain"
+                />
+              </div>
+            </div>
+
             <p className="text-gray-300 flex-grow">
               <span className="text-teal-400 font-semibold">Students</span> gain
               affordable <span className="text-teal-400">resources</span>, and the
@@ -73,3 +97,4 @@ export default function InsightsSection() {
     </section>
   );
 }
+
