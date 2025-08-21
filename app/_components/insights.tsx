@@ -43,7 +43,7 @@ export default function InsightsSection() {
           {/* Card 2 */}
           <div className="bg-gray-900 rounded-6xl p-6 flex flex-col">
             <img
-              src="/new/Logo.png"
+              src="/Logo.svg"
               alt="Founders"
               className="w-full aspect-[4/3] object-contain mb-4 rounded-2xl min-w-[200px] min-h-[150px]"
             />
