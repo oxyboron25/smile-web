@@ -14,7 +14,7 @@ import Button from "./_components/Start-Your-Branch";
 import OurBranches from "./_components/OurBranches";
 import OpenYourBranch from "./_components/openyourbranch";
 import MentorCarousel from "./_components/mentor";
-
+// import Form from "./_components/form"
 import JoinSmile from "./_components/colleges";
 import GlobalNetworks from "./_components/map";
 import InsightsSection from "./_components/insights";
