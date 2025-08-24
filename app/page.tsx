@@ -68,16 +68,6 @@ export default function Home() {
       <InsightsSection />
       <Faqs />
       <Footer />
-
-      
-      
-      
-      
-
-      {/* <Timeline /> */}
-      {/* <Contribute /> */}
-      {/* <Contact /> */}
-      <Footer/>
     </main>
   );
 }
