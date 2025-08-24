@@ -16,15 +16,15 @@ const SmileHeroSection = () => {
           <h1 className="font-bold text-3xl block lg:hidden">
             SMILE
           </h1>
-          <h1 className="font-bold text-4xl hidden lg:block">
+          <h1 className="font-bold text-6xl hidden lg:block">
             Society for Mental health Inclusivity, Literacy
             <br />
             and Empowerment
           </h1>
-          <h2 className="text-xl lg:text-2xl">
-            Join us in our mission to build the largest mental health community in India, for providing free resources to individuals in need.
+          <h2 className="text-xl lg:text-3xl">
+            Join us in our mission to build the largest student lead mental health community in the World, for providing free resources to individuals in need.
           </h2>
-          <button className="border border-white px-6 py-2 rounded-full text-white font-light transition duration-300 ease-in-out hover:bg-white hover:text-[#001612] hover:font-semibold w-fit">
+          <button className="border border-white px-6 py-2 rounded-full text-white font-semibold text-3xl transition duration-300 ease-in-out hover:bg-white hover:text-[#001612] hover:font-bold w-fit">
             Get in Touch
           </button>
         </div>
@@ -34,7 +34,7 @@ const SmileHeroSection = () => {
       <div className="min-h-[15vh] grid grid-cols-2 sm:grid-cols-4 gap-8 p-8 text-center lg:flex lg:flex-row lg:justify-around lg:items-center">
         <StatBlock icon={<UsersRound size={50} color="white" />} number="10M+" label="People Impacted" />
         <StatBlock icon={<Presentation size={50} color="white" />} number="60K+" label="Volunteer Hours" />
-        <StatBlock icon={<School size={50} color="white" />} number="10+" label="Colleges Reached" />
+        <StatBlock icon={<School size={50} color="white" />} number="100+" label="Colleges Reached" />
         <StatBlock icon={<HandHeart size={50} color="white" />} number="INR 10M+" label="Funding Donated" />
       </div>
     </div>
