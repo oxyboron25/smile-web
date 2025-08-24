@@ -4,6 +4,7 @@ import React from "react";
 import Logo from "@/public/Logo.svg";
 import { Linkedin } from "lucide-react";
 import { FaInstagram ,FaLinkedin} from "react-icons/fa";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -18,7 +19,7 @@ const Footer = () => {
         <a href="#" className="hover:text-gray-300">The Network</a>
         <a href="#" className="hover:text-gray-300">Explore Mental Health</a>
         <a href="#" className="hover:text-gray-300">About Us</a>
-        <a href="#" className="hover:text-gray-300">Start a Chapter</a>
+        <Link href="/form" target="_blank" className="hover:text-gray-300">Start a Chapter ↗</Link>
       </div>
 
       {/* Social Icons */}
