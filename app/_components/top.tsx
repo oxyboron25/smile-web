@@ -1,5 +1,7 @@
 import React from "react";
 import { ChevronDown } from "lucide-react";
+// import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const Navbar = () => {
   return (
@@ -28,7 +30,7 @@ const Navbar = () => {
 
       {/* Button */}
       <button className="bg-white text-black rounded-full px-5 py-2 text-lg font-medium hover:bg-gray-200 transition">
-        Start a Chapter ↗
+       <Link href="/form" target="_blank">Start a Chapter ↗</Link> 
       </button>
     </nav>
   );
@@ -51,7 +53,7 @@ const Hero = () => {
         </p>
 
         <button className="mt-12 bg-white text-black rounded-md px-6 py-3 text-base font-medium hover:bg-gray-200 transition">
-          Start a Chapter ↗
+         <Link href="/form" target="_blank">Start a Chapter ↗</Link> 
         </button>
       </div>
       <div className="bg-white text-black rounded-lg shadow-md mt-16 grid grid-cols-2 md:grid-cols-4 divide-x divide-gray-200 overflow-hidden mb-12">
