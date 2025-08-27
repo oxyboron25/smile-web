@@ -55,7 +55,7 @@ export default function Form() {
     };
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}  noValidate className="max-w-3xl mx-auto p-10 space-y-8 bg-black text-white">
+        <form onSubmit={handleSubmit(onSubmit)} noValidate className="max-w-3xl mx-auto p-10 space-y-8 bg-black text-white">
             <div className="bg-[#076461] p-6 text-start flex flex-col items-start gap-2 max-w-96">
                 <div className="flex items-center gap-5 justify-center">
                     <span className="text-5xl">Join</span>
@@ -235,26 +235,32 @@ export default function Form() {
                 <div className="mt-4 space-y-6">
 
                     <div>
-                        <label className="p-2 inline-block mb-2 border-2 border-[#824909]">Select the Role*</label>
+                        <label
+                            className={`p-2 inline-block mb-2 border-2 ${errors?.foundingMember?.role ? "border-red-500" : "border-[#824909]"
+                                }`}
+                        >
+                            Select the Role*
+                        </label>
+
                         <div className="flex flex-wrap gap-6">
-                            {["President", "Vice President", "Director, Marketing", "Director, Projects"].map(
-                                (role) => (
-                                    <label key={role} className="flex items-center gap-2">
-                                        <input
-                                            type="radio"
-                                            value={role}
-                                            {...register("foundingMember.role", { required: true })}
-                                            className="accent-[#3ECF8E]"
-                                        />
-                                        {role}
-                                    </label>
-                                )
-                            )}
+                            {["President", "Vice President", "Director, Marketing", "Director, Projects"].map((role) => (
+                                <label key={role} className="flex items-center gap-2">
+                                    <input
+                                        type="radio"
+                                        value={role}
+                                        {...register("foundingMember.role", { required: true })}
+                                        className="accent-[#3ECF8E]"
+                                    />
+                                    {role}
+                                </label>
+                            ))}
                         </div>
-                        {errors.foundingMember?.role && (
-                            <p className="text-red-500 text-sm mt-1"> Select a role</p>
+
+                        {errors?.foundingMember?.role && (
+                            <p className="text-red-500 text-sm mt-1">Please select a role.</p>
                         )}
                     </div>
+
 
                     {/* Name */}
                     <div>
