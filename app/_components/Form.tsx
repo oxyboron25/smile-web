@@ -17,18 +17,26 @@ const schema = z.object({
     contact: z.object({
         name: z.string().min(1, "Please enter a name"),
         email: z.string().email("Enter a valid email"),
-        phone: z.string().regex(/^[0-9]{10}$/, "Phone number must be 10 digits"),
+        phone: z.string().min(10, "Please enter a valid contact number"),
         linkedin: z.string().url("Please enter a valid LinkedIn profile"),
     }),
 
     foundingMember: z.object({
-        role: z.string().min(1, "Please select a role"),
+        role: z.string().min(1, "Select a role"),
         name: z.string().min(1, "Please enter a name"),
         email: z.string().email("Enter a valid email"),
-        phone: z.string().regex(/^[0-9]{10}$/, "Phone number must be 10 digits"),
+        phone: z.string().min(10, "Please enter a valid contact number"),
         linkedin: z.string().url("Please enter a valid LinkedIn profile"),
-        discipline: z.string().min(1, "Please select a discipline"),
+        discipline: z.string().min(1, "Please select one option"),
+        study: z.string().min(1, "Please select one option")
     }),
+    resume: z
+        .any()
+        .refine((files) => files?.length > 0, "Please upload a valid document"),
+
+    proof: z
+        .any()
+        .refine((files) => files?.length > 0, "Please upload a valid document"),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -47,7 +55,7 @@ export default function Form() {
     };
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="max-w-3xl mx-auto p-10 space-y-8 bg-black text-white">
+        <form onSubmit={handleSubmit(onSubmit)}  noValidate className="max-w-3xl mx-auto p-10 space-y-8 bg-black text-white">
             <div className="bg-[#076461] p-6 text-start flex flex-col items-start gap-2 max-w-96">
                 <div className="flex items-center gap-5 justify-center">
                     <span className="text-5xl">Join</span>
@@ -69,7 +77,7 @@ export default function Form() {
                             {...register("university")}
                             placeholder="Name of University*"
                             className={`w-full p-2 rounded border-2 border-[#824909] ${errors.university ? "border-red-500" : "border-[#824909]"
-                                } bg-transparent text-white placeholder-white`}
+                                } bg-transparent text-white placeholder-white focus:outline-none focus:ring-0 focus:border-[#824909]`}
                         />
                         {errors.university && (
                             <p className="text-red-500 text-sm">{errors.university.message}</p>
@@ -89,38 +97,57 @@ export default function Form() {
                     </div>
 
                     <div className="grid grid-cols-3 gap-4">
-                        <select
-                            {...register("state")}
-                            className={`p-2 rounded border-2 border-[#824909] ${errors.state ? "border-red-500" : "border-[#824909]"
-                                } bg-transparent placeholder-white`}
-                        >
-                            <option value="" disabled selected className="text-black">State*</option>
-                            <option value="Delhi" className="text-black">Delhi</option>
-                            <option value="Maharashtra" className="text-black">Maharashtra</option>
-                            <option value="Karnataka" className="text-black">Karnataka</option>
-                        </select>
+                        {/* State */}
+                        <div className="flex flex-col">
+                            <select
+                                {...register("state")}
+                                className={`p-2 rounded border-2 border-[#824909] ${errors.state ? "border-red-500" : "border-[#824909]"
+                                    } bg-transparent placeholder-white`}
+                            >
+                                <option value="" className="text-black">State*</option>
+                                <option value="Delhi" className="text-black">Delhi</option>
+                                <option value="Maharashtra" className="text-black">Maharashtra</option>
+                                <option value="Karnataka" className="text-black">Karnataka</option>
+                            </select>
+                            {errors.state?.message && (
+                                <p className="text-red-500 text-sm mt-1">{errors.state.message}</p>
+                            )}
+                        </div>
 
-                        <select
-                            {...register("pincode")}
-                            className={`p-2 rounded border-2 border-[#824909] ${errors.pincode ? "border-red-500" : "border-[#824909]"
-                                } bg-transparent  placeholder-white`}
-                        >
-                            <option value="" disabled selected className="text-black">Pincode*</option>
-                            <option value="123456" className="text-black">123456</option>
-                            <option value="234567" className="text-black">234567</option>
-                            <option value="456789" className="text-black">456789</option>
-                        </select>
+                        {/* Pincode */}
+                        <div className="flex flex-col">
+                            <select
+                                {...register("pincode")}
+                                className={`p-2 rounded border-2 border-[#824909] ${errors.pincode ? "border-red-500" : "border-[#824909]"
+                                    } bg-transparent placeholder-white`}
+                            >
+                                <option value="" className="text-black">Pincode*</option>
+                                <option value="123456" className="text-black">123456</option>
+                                <option value="234567" className="text-black">234567</option>
+                                <option value="456789" className="text-black">456789</option>
+                            </select>
+                            {errors.pincode?.message && (
+                                <p className="text-red-500 text-sm mt-1">{errors.pincode.message}</p>
+                            )}
+                        </div>
 
-                        <select
-                            {...register("district")}
-                            className={`p-2 rounded border-2 border-[#824909] ${errors.district ? "border-red-500" : "border-[#824909]"
-                                } bg-transparent placeholder-white`}
-                        >
-                            <option value="" disabled selected className="text-black">District*</option>
-                            <option value="South Delhi" className="text-black">South Delhi</option>
-                            <option value="North Delhi" className="text-black">North Delhi</option>
-                        </select>
+                        {/* District */}
+                        <div className="flex flex-col">
+                            <select
+                                {...register("district")}
+                                className={`p-2 rounded border-2 border-[#824909] ${errors.district ? "border-red-500" : "border-[#824909]"
+                                    } bg-transparent placeholder-white`}
+                            >
+                                <option value="" className="text-black">District*</option>
+                                <option value="South Delhi" className="text-black">South Delhi</option>
+                                <option value="North Delhi" className="text-black">North Delhi</option>
+                            </select>
+                            {errors.district?.message && (
+                                <p className="text-red-500 text-sm mt-1">{errors.district.message}</p>
+                            )}
+                        </div>
                     </div>
+
 
                     <div>
                         <input
@@ -168,25 +195,31 @@ export default function Form() {
                     </div>
 
                     <div className="grid grid-cols-2 gap-4">
-                        <input
-                            {...register("contact.phone")}
-                            placeholder="Conatct Number*"
-                            className={`w-full p-2 rounded border-2 border-[#824909] ${errors.contact?.phone ? "border-red-500" : "border-[#824909]"
-                                } bg-transparent text-white placeholder-white`}
-                        />
+                        <div className="flex flex-col">
 
-                        {errors.contact?.phone && (
-                            <p className="text-red-500 text-sm">{errors.contact?.phone.message}</p>
-                        )}
-                        <input
-                            {...register("contact.linkedin")}
-                            placeholder="LinkedIn*"
-                            className={`w-full p-2 rounded border-2 border-[#824909] ${errors.contact?.linkedin ? "border-red-500" : "border-[#824909]"
-                                } bg-transparent text-white placeholder-white`}
-                        />
-                        {errors.contact?.linkedin && (
-                            <p className="text-red-500 text-sm">{errors.contact?.linkedin.message}</p>
-                        )}
+                            <input
+                                {...register("contact.phone")}
+                                placeholder="Conatct Number*"
+                                className={`w-full p-2 rounded border-2 border-[#824909] ${errors.contact?.phone ? "border-red-500" : "border-[#824909]"
+                                    } bg-transparent text-white placeholder-white`}
+                            />
+
+                            {errors.contact?.phone && (
+                                <p className="text-red-500 text-sm">{errors.contact?.phone.message}</p>
+                            )}
+                        </div>
+                        <div className="flex flex-col">
+
+                            <input
+                                {...register("contact.linkedin")}
+                                placeholder="LinkedIn*"
+                                className={`w-full p-2 rounded border-2 border-[#824909] ${errors.contact?.linkedin ? "border-red-500" : "border-[#824909]"
+                                    } bg-transparent text-white placeholder-white`}
+                            />
+                            {errors.contact?.linkedin && (
+                                <p className="text-red-500 text-sm">{errors.contact?.linkedin.message}</p>
+                            )}
+                        </div>
 
                     </div>
                 </div>
@@ -327,58 +360,69 @@ export default function Form() {
                                 "Undergraduate-Fourth Year",
                                 "Postgraduate-Masters",
                                 "Postgraduate-Doctoral",
-                            ].map((role) => (
-                                <label key={role} className="flex items-center gap-3">
+                            ].map((study) => (
+                                <label key={study} className="flex items-center gap-3">
                                     <input
                                         type="radio"
-                                        value={role}
+                                        value={study}
                                         {...register("foundingMember.role", { required: true })}
                                         className="accent-[#3ECF8E]"
                                     />
-                                    {role}
+                                    {study}
                                 </label>
                             ))}
                         </div>
                     </div>
 
-                    {errors.foundingMember?.role && (
-                        <p className="text-red-500 text-sm mt-1"> Select a role</p>
+                    {errors.foundingMember?.study && (
+                        <p className="text-red-500 text-sm mt-1">Please select one option</p>
                     )}
                     {/* File Uploads */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <label className="flex items-center justify-between border-2 border-[#824909] p-2 text-white rounded">
-                            Resume*
-                            <input type="file" className="hidden" />
-                            <span className="text-gray-300">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    strokeWidth={1.5}
-                                    stroke="currentColor"
-                                    className="w-5 h-5"
-                                >
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 16.5V9.75m0 0L8.25 13.5m3.75-3.75 3.75 3.75M4.5 19.5h15" />
-                                </svg>
-                            </span>
-                        </label>
+                        <div className="flex flex-col">
 
-                        <label className="flex items-center justify-between border-2 border-[#824909] rounded p-2 text-white">
-                            Proof of University Affiliation*
-                            <input type="file" className="hidden" />
-                            <span className="text-gray-300">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    strokeWidth={1.5}
-                                    stroke="currentColor"
-                                    className="w-5 h-5"
-                                >
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 16.5V9.75m0 0L8.25 13.5m3.75-3.75 3.75 3.75M4.5 19.5h15" />
-                                </svg>
-                            </span>
-                        </label>
+                            <label className="flex items-center justify-between border-2 border-[#824909] p-2 text-white rounded">
+                                Resume*
+                                <input type="file" {...register("resume")} className="hidden" />
+                                <span className="text-gray-300">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        strokeWidth={1.5}
+                                        stroke="currentColor"
+                                        className="w-5 h-5"
+                                    >
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 16.5V9.75m0 0L8.25 13.5m3.75-3.75 3.75 3.75M4.5 19.5h15" />
+                                    </svg>
+                                </span>
+                            </label>
+                            {errors.resume && (
+                                <p className="text-red-500 text-sm mt-1">{String(errors.resume.message)}</p>
+                            )}
+                        </div>
+                        <div className="flex flex-col">
+
+                            <label className="flex items-center justify-between border-2 border-[#824909] rounded p-2 text-white">
+                                Proof of University Affiliation*
+                                <input type="file" {...register("proof")} className="hidden" />
+                                <span className="text-gray-300">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        strokeWidth={1.5}
+                                        stroke="currentColor"
+                                        className="w-5 h-5"
+                                    >
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 16.5V9.75m0 0L8.25 13.5m3.75-3.75 3.75 3.75M4.5 19.5h15" />
+                                    </svg>
+                                </span>
+                            </label>
+                            {errors.resume && (
+                                <p className="text-red-500 text-sm mt-1">{String(errors.proof?.message)}</p>
+                            )}
+                        </div>
                     </div>
 
                 </div>
