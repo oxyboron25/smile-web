@@ -31,6 +31,7 @@ import Faqs from "./_components/faqs";
 import Navbar from "./_components/navbar";
 import Footer from "./_components/footer";
 import BannerImage from "./_components/banner";
+import StatsBox from "./_components/box";
 
 
 
@@ -53,7 +54,8 @@ export default function Home() {
   return (
     <main className=" bg-[#001612] h-fit w-[100vw] scroll-smooth">
       
-      <Homepage />
+      <Homepage />      
+      <StatsBox />      
       <StigmaSection />
       <BannerImage />
       <StudentsMoveSection />

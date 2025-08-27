@@ -13,8 +13,9 @@ const JoinSmile: React.FC = () => {
 
   // Color classes repeating [black → white]
   const colors = [
-    "bg-black text-white",
+    "bg-[#001612] text-white",
     "bg-white text-gray-900 shadow-md border border-gray-200",
+    "bg-[#121212] text-white",
   ];
 
   return (
@@ -22,13 +23,13 @@ const JoinSmile: React.FC = () => {
       {/* Top Row */}
       <div className="flex flex-col md:flex-row justify-between items-start mb-10 sm:mb-12">
         {/* Left Description */}
-        <div className="md:max-w-md text-sm sm:text-base lg:text-lg leading-relaxed md:ml-12 text-white text-center md:text-left">
+        <div className="md:max-w-md text-sm sm:text-base lg:text-lg leading-relaxed md:ml-20 text-white text-center md:text-left">
           A symbiotic network of students, founders, and professional mentors
           driving cultural change in mental health support
         </div>
 
         {/* Right Heading */}
-        <div className="mt-6 md:mt-0 text-center md:text-right">
+        <div className="mt-6 mr-10 md:mt-0 text-center md:text-right">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl mr-0 md:mr-10 text-white font-light">
             Join SMILE
           </h2>
