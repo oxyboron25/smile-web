@@ -7,7 +7,7 @@ const Navbar = () => {
       {/* Logo */}
       <div className="flex items-center">
         <img
-          src="/logo.png"
+          src="/logo.svg"
           alt="SMILE Logo"
           className="h-16 w-auto md:h-20" // 🔥 Bigger logo
         />
