@@ -30,9 +30,11 @@ const Navbar = () => {
         </div>
 
         {/* Button */}
-        <button className="bg-white text-black rounded-xl px-5 py-2 text-[27] font-medium hover:bg-gray-200 transition">
-          Start a Chapter ↗ 
-        </button>
+        <button className="bg-white text-black rounded-xl px-5 py-2 text-[35] font-light hover:bg-gray-200 transition flex items-center gap-1">
+  Start a Chapter
+  <img src="/new/Group 40058.png" alt="arrow" className="w-6 h-6" />
+</button>
+
       </div>
     </nav>
   );
@@ -55,8 +57,9 @@ const Hero = () => {
           resources to students who require mental health support.
         </p>
 
-        <button className="mt-12 bg-white text-black rounded-xl px-6 py-3 text-[35] font-medium hover:bg-gray-200 transition">
-          Start a Chapter ↗
+        <button className="mt-12 bg-white text-black rounded-xl px-6 py-3 text-[35] font-light flex items-center gap-1 hover:bg-gray-200 transition">
+          Start a Chapter 
+          <img src="/new/Group 40058.png" alt="arrow image" className="w-6 h-6" />
         </button>
       </div>
     </section>

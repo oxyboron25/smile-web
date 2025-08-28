@@ -18,43 +18,43 @@ const JoinSmileSection: React.FC = () => {
 
           {/* Card 1: Browse Activities */}
           <div className="flex flex-col sm:flex-row items-center bg-white rounded-xl p-4 gap-4 relative">
-  {/* IMAGE CONTAINER */}
-  <div className="w-full sm:w-1/2 aspect-[4/3] min-w-[160px] min-h-[120px] relative">
-    <img
-      src="/new/Adobe Express - file (1) 1 (2).png"
-      alt="Activities"
-      className="w-full h-full object-cover rounded-lg"
-    />
+            {/* IMAGE CONTAINER */}
+            <div className="w-full sm:w-1/2 aspect-[4/3] min-w-[160px] min-h-[120px] relative">
+              <img
+                src="/new/Adobe Express - file (1) 1 (2).png"
+                alt="Activities"
+                className="w-full h-full object-cover rounded-lg"
+              />
 
-    {/* ARROW BUTTON INSIDE IMAGE */}
-    <button className="absolute bottom-3 right-3 w-10 h-10 flex items-center justify-center">
-      <img src="/new/Group 40058.png" alt="arrow" className="w-8 h-8" />
-    </button>
-  </div>
+              {/* ARROW BUTTON INSIDE IMAGE */}
+              <button className="absolute bottom-3 right-3 w-10 h-10 flex items-center justify-center">
+                <img src="/new/Group 40058.png" alt="arrow" className="w-8 h-8" />
+              </button>
+            </div>
 
-  {/* TEXT CONTENT */}
-  <div className="flex-1 flex flex-col justify-center relative pr-10">
-    <h3 className="text-lg sm:text-xl font-semibold">
-      Browse our <i>activities</i>
-    </h3>
-    <p className="text-gray-700 mt-2 text-sm sm:text-base">
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-    </p>
-  </div>
-</div>
-
+            {/* TEXT CONTENT */}
+            <div className="flex-1 flex flex-col justify-center relative pr-10">
+              <h3 className="text-lg sm:text-xl font-semibold">
+                Browse our <i>activities</i>
+              </h3>
+              <p className="text-gray-700 mt-2 text-sm sm:text-base">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's std. 
+              </p>
+            </div>
+          </div>
 
           {/* Row: Mentor + Chapter */}
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
             {/* Chapter Card */}
-            <div className="flex-1 bg-black rounded-xl overflow-hidden min-w-[150px] min-h-[120px] relative">
-              <img
-                src="/new/Frame 8 (2).png"
-                alt="Chapter"
-                className="w-full h-auto object-contain"
-              />
-             
+           {/* Chapter Card — image pushed down with top space */}
+            <div className="flex-1 bg-black rounded-xl overflow-hidden aspect-[4/3] min-w-[150px] min-h-[120px] relative flex items-end justify-center">
+               <img
+                    src="/new/Frame 8 (2).png"
+                    alt="Chapter"
+                    className="max-w-full max-h-[82%] object-contain"
+  />
             </div>
+
 
             {/* Mentor Card */}
             <div className="flex-1 bg-black rounded-xl overflow-hidden aspect-[4/3] min-w-[150px] min-h-[120px] relative">
@@ -69,7 +69,7 @@ const JoinSmileSection: React.FC = () => {
               <img
                 src="/new/Group 40058.png"
                 alt="Arrow"
-                className="absolute bottom-3 right-3 w-8 h-8 cursor-pointer"
+                className="absolute bottom-3 right-3 w-9 h-9 cursor-pointer"
               />
             </div>
           </div>
@@ -87,32 +87,31 @@ const JoinSmileSection: React.FC = () => {
           </div>
 
           {/* Card 4 */}
-         <div className="bg-white rounded-xl p-4 relative flex flex-col gap-3">
-  {/* IMAGE CONTAINER */}
-  <div className="aspect-[16/9] min-w-[180px] min-h-[140px] relative">
-    <img
-      src="/new/Adobe Express - file 1 (1).png"
-      alt="Join SMILE"
-      className="w-full h-full object-cover rounded-lg"
-    />
+          <div className="bg-white rounded-xl p-4 relative flex flex-col gap-3">
+            {/* IMAGE CONTAINER */}
+            <div className="aspect-[16/9] min-w-[180px] min-h-[140px] relative">
+              <img
+                src="/new/Adobe Express - file 1 (1).png"
+                alt="Join SMILE"
+                className="w-full h-full object-cover rounded-lg"
+              />
 
-    {/* ARROW BUTTON INSIDE IMAGE */}
-    <button className="absolute bottom-3 right-3  w-10 h-10 flex items-center justify-center ">
-      <img src="/new/Group 40056.png" alt="arrow" className="w-8 h-8" />
-    </button>
-  </div>
+              {/* ARROW BUTTON INSIDE IMAGE */}
+              <button className="absolute bottom-3 right-3 w-10 h-10 flex items-center justify-center ">
+                <img src="/new/Group 40056.png" alt="arrow" className="w-8 h-8" />
+              </button>
+            </div>
 
-  {/* TITLE */}
-  <h3 className="text-lg sm:text-xl font-normal">
-    Leading from the front: Join <i>SMILE</i>
-  </h3>
+            {/* TITLE */}
+            <h3 className="text-lg sm:text-xl font-normal">
+              Leading from the front: Join <i>SMILE</i>
+            </h3>
 
-  {/* DESCRIPTION */}
-  <p className="text-gray-700 text-sm sm:text-base">
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-  </p>
-</div>
-
+            {/* DESCRIPTION */}
+            <p className="text-gray-700 text-sm sm:text-base">
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's std. 
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -120,6 +119,7 @@ const JoinSmileSection: React.FC = () => {
 };
 
 export default JoinSmileSection;
+
 
 
 

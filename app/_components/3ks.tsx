@@ -41,7 +41,7 @@ export default function SmileMethodology() {
               <img
                 src="/new/Group 40058.png"  // <-- your arrow image path here
                 alt="arrow"
-                className="absolute bottom-3 right-3 w-5 h-5"
+                className="absolute bottom-3 right-3 w-7 h-7"
               />
             </div>
             <div className="mt-4">
@@ -65,7 +65,7 @@ export default function SmileMethodology() {
               <img
                 src="/new/Group 40058.png"  // <-- arrow image
                 alt="arrow"
-                className="absolute bottom-3 right-3 w-5 h-5"
+                className="absolute bottom-3 right-3 w-7 h-7"
               />
             </div>
             <div className="mt-4">
@@ -87,7 +87,7 @@ export default function SmileMethodology() {
               <img
                 src="/new/Group 40058.png"  // <-- arrow image
                 alt="arrow"
-                className="absolute bottom-3 right-3 w-5 h-5"
+                className="absolute bottom-3 right-3 w-7 h-7"
               />
             </div>
             <div className="mt-4">
