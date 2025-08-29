@@ -21,19 +21,19 @@ const JoinSmile: React.FC = () => {
   return (
     <section className="max-w-8xl mx-auto px-4 sm:px-6 md:px-12 py-10 sm:py-14 lg:py-16 bg-[#132E31] overflow-hidden">
       {/* Top Row */}
-      <div className="flex flex-col md:flex-row justify-between items-start mb-10 sm:mb-12">
+      <div className="flex flex-col-reverse md:flex-row justify-between items-center md:items-start mb-10 sm:mb-12 text-center md:text-left">
         {/* Left Description */}
-        <div className="md:max-w-md text-sm sm:text-base lg:text-lg leading-relaxed md:ml-20 text-white text-center md:text-left">
+        <div className="md:max-w-md text-sm sm:text-base lg:text-lg leading-relaxed text-white md:ml-20">
           A symbiotic network of students, founders, and professional mentors
           driving cultural change in mental health support
         </div>
 
         {/* Right Heading */}
-        <div className="mt-6 mr-10 md:mt-0 text-center md:text-right">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl mr-0 md:mr-10 text-white font-light">
+        <div className="mb-6 md:mb-0 md:mr-10">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl text-white font-light">
             Join SMILE
           </h2>
-          <p className="text-3xl sm:text-4xl lg:text-5xl italic mr-0 md:mr-8 text-teal-400">
+          <p className="text-3xl sm:text-4xl lg:text-5xl italic text-teal-400">
             Empower change
           </p>
         </div>
@@ -88,6 +88,7 @@ const JoinSmile: React.FC = () => {
 };
 
 export default JoinSmile;
+
 
 
 

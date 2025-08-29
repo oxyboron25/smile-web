@@ -5,7 +5,7 @@ export default function SmileMethodology() {
     <section className="bg-[#132E31] text-white py-16 px-6">
       <div className="max-w-7xl mx-auto">
         {/* Heading + Subheading side by side */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 items-center text-center md:text-left">
           {/* Left: Heading */}
           <div>
             <h2 className="text-3xl md:text-5xl text-[#7ED5C9] font-light italic">
@@ -18,7 +18,7 @@ export default function SmileMethodology() {
 
           {/* Right: Subheading */}
           <div>
-            <p className="text-[27] md:text-xl leading-relaxed">
+            <p className="text-lg md:text-xl leading-relaxed">
               A symbiotic network of{" "}
               <span className="text-[#7ED5C9] ">students</span>,{" "}
               <span className="text-[#7ED5C9] ">founders</span>, and{" "}
@@ -29,7 +29,7 @@ export default function SmileMethodology() {
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
           {/* Card 1 */}
           <div>
             <div className="bg-[#C1E3DF] rounded-lg overflow-hidden shadow-md relative">
@@ -39,13 +39,13 @@ export default function SmileMethodology() {
                 className="w-full h-56 object-cover"
               />
               <img
-                src="/new/Group 40058.png"  // <-- your arrow image path here
+                src="/new/Group 40058.png"
                 alt="arrow"
                 className="absolute bottom-3 right-3 w-7 h-7"
               />
             </div>
             <div className="mt-4">
-              <p className="text-[21] max-w-2xl">
+              <p className="text-lg max-w-2xl">
                 <span className="font-semibold text-[#7ED5C9]">
                   Professional mentors
                 </span>{" "}
@@ -63,13 +63,13 @@ export default function SmileMethodology() {
                 className="w-full h-56 object-cover"
               />
               <img
-                src="/new/Group 40058.png"  // <-- arrow image
+                src="/new/Group 40058.png"
                 alt="arrow"
                 className="absolute bottom-3 right-3 w-7 h-7"
               />
             </div>
             <div className="mt-4">
-              <p className="text-[21] max-w-2xl">
+              <p className="text-lg max-w-2xl">
                 <span className="font-semibold text-[#7ED5C9]">Founders</span>{" "}
                 gain mentorship, valuable customer feedback, and connections to refine and scale their solutions.
               </p>
@@ -85,13 +85,13 @@ export default function SmileMethodology() {
                 className="w-full h-56 object-cover"
               />
               <img
-                src="/new/Group 40058.png"  // <-- arrow image
+                src="/new/Group 40058.png"
                 alt="arrow"
                 className="absolute bottom-3 right-3 w-7 h-7"
               />
             </div>
             <div className="mt-4">
-              <p className="text-[21] max-w-2xl">
+              <p className="text-lg max-w-2xl">
                 <span className="font-semibold text-[#7ED5C9]">Students</span>{" "}
                 gain affordable resources, and the support they need to lead change in their communities.
               </p>
@@ -102,3 +102,4 @@ export default function SmileMethodology() {
     </section>
   );
 }
+

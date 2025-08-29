@@ -4,9 +4,18 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 const FounderStories: React.FC = () => {
   return (
     <section className="bg-[#121212] text-white px-6 md:px-20 py-16">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+      {/* Top Row */}
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center text-center md:text-left">
+        {/* Right Heading (shown above on mobile) */}
+        <div className="order-1 md:order-2">
+          <h2 className="text-3xl md:text-4xl font-light">Our Journey</h2>
+          <p className="text-3xl md:text-5xl italic text-[#4EBCA5]">
+            Founder Stories
+          </p>
+        </div>
+
         {/* Left Text Section */}
-        <div>
+        <div className="order-2 md:order-1">
           <p className="text-lg leading-relaxed">
             A symbiotic network of{" "}
             <span className="text-[#4EBCA5]">students</span>,{" "}
@@ -15,18 +24,10 @@ const FounderStories: React.FC = () => {
             cultural change in mental health support
           </p>
         </div>
-
-        {/* Right Heading */}
-        <div className="text-right">
-          <h2 className="text-3xl md:text-4xl font-light">Our Journey</h2>
-          <p className="text-3xl md:text-5xl italic text-[#4EBCA5]">
-            Founder Stories
-          </p>
-        </div>
       </div>
 
       {/* Founder Card */}
-      <div className="mt-12 ml-12 mr-10 bg-white text-black rounded-xl shadow-md p-6 md:p-10 flex flex-col md:flex-row gap-8 items-center">
+      <div className="mt-12 mx-6 md:mx-12 bg-white text-black rounded-xl shadow-md p-6 md:p-10 flex flex-col md:flex-row gap-8 items-center">
         {/* Image */}
         <div className="w-full md:w-1/3 flex-shrink-0">
           <img
@@ -37,7 +38,7 @@ const FounderStories: React.FC = () => {
         </div>
 
         {/* Content */}
-        <div className="flex-1">
+        <div className="flex-1 text-center md:text-left">
           <p className="uppercase text-xl font-semibold text-gray-500">
             Co-Founder
           </p>
@@ -50,21 +51,23 @@ const FounderStories: React.FC = () => {
           </p>
 
           {/* Buttons */}
-          <div className="mt-6 flex items-center gap-4">
-            <button className="flex items-center gap-2 bg-black text-white mt-20 text-xl px-4 py-2 rounded-xl hover:bg-gray-800 transition">
+          <div className="mt-6 flex flex-col md:flex-row md:items-center gap-6">
+            <button className="flex items-center justify-center gap-2 bg-black text-white text-lg px-5 py-3 rounded-xl hover:bg-gray-800 transition">
               Read More
               <img
-                src="/new/Group 40056.png" // <-- replace with your arrow image path
+                src="/new/Group 40056.png"
                 alt="arrow"
-                className="w-8 h-8"
+                className="w-7 h-7"
               />
             </button>
-            <div className="flex items-center mt-20 gap-2 ml-auto">
+
+            {/* Navigation buttons */}
+            <div className="flex items-center justify-center md:ml-auto gap-3">
               <button className="p-2 rounded-full border bg-black text-white border-gray-300 hover:bg-gray-200 transition">
-                <ArrowLeft size={25} />
+                <ArrowLeft size={22} />
               </button>
               <button className="p-2 rounded-full border bg-black text-white border-gray-300 hover:bg-gray-200 transition">
-                <ArrowRight size={25} />
+                <ArrowRight size={22} />
               </button>
             </div>
           </div>
@@ -75,3 +78,4 @@ const FounderStories: React.FC = () => {
 };
 
 export default FounderStories;
+
