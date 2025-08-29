@@ -29,8 +29,8 @@ const JoinSmile: React.FC = () => {
         </div>
 
         {/* Right Heading */}
-        <div className="mb-6 md:mb-0 md:mr-10">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl text-white font-light">
+        <div className="mb-6 md:mb-0 md:mr-20">
+          <h2 className="text-2xl sm:text-3xl text-right lg:text-4xl text-white font-light">
             Join SMILE
           </h2>
           <p className="text-3xl sm:text-4xl lg:text-5xl italic text-teal-400">

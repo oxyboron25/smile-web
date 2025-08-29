@@ -13,7 +13,7 @@ const Navbar = () => {
           <img
             src="/Logo.svg"
             alt="SMILE Logo"
-            className="h-8 sm:h-10 md:h-16 lg:h-20 w-auto"
+            className="h-8 sm:h-6 md:h-8 lg:h-12 w-auto"
           />
         </div>
 
@@ -32,12 +32,18 @@ const Navbar = () => {
           </span>
         </div>
 
-        {/* Desktop Button (md+) */}
-        <button className="hidden md:flex bg-white text-black rounded-xl px-5 py-2 text-[18px] font-light  items-center gap-1 hover:bg-gray-200 transition">
-          <Link href="/form" target="_blank">
-            Start a Chapter ↗
-          </Link>
-        </button>
+       {/* Desktop Button (md+) */}
+<button className="hidden md:flex bg-white text-black rounded-xl px-5 py-2 text-[18px] font-light items-center gap-1 hover:bg-gray-200 transition">
+  <Link href="/form" target="_blank" className="flex items-center gap-1">
+    Start a Chapter
+    <img
+      src="/new/Group 40058.png"  // <-- replace with your arrow image path
+      alt="Arrow"
+      className="w-6 h-6 inline-block"
+    />
+  </Link>
+</button>
+
 
         {/* Mobile / Tablet Hamburger */}
         <div className="md:hidden flex items-center">
@@ -99,7 +105,12 @@ const Hero = () => {
 
         <button className="mt-4 sm:mt-6 md:mt-12 bg-white text-black rounded-xl px-4 py-2 text-sm sm:px-5 sm:py-2 sm:text-base md:px-6 md:py-3 md:text-[18px] font-light flex items-center gap-1 hover:bg-gray-200 transition">
           <Link href="/form" target="_blank">
-            Start a Chapter ↗
+            Start a Chapter 
+            <img
+      src="/new/Group 40058.png"  // <-- replace with your arrow image path
+      alt="Arrow"
+      className="w-6 h-6 inline-block"
+    />
           </Link>
         </button>
       </div>
