@@ -8,8 +8,8 @@ const FounderStories: React.FC = () => {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center text-center md:text-left">
         {/* Right Heading (shown above on mobile) */}
         <div className="order-1 md:order-2">
-          <h2 className="text-3xl md:text-4xl font-light">Our Journey</h2>
-          <p className="text-3xl md:text-5xl italic text-[#4EBCA5]">
+          <h2 className="text-3xl md:text-4xl md:text-right font-light">Our Journey</h2>
+          <p className="text-3xl md:text-5xl md:text-right italic text-[#4EBCA5]">
             Founder Stories
           </p>
         </div>
