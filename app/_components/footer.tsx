@@ -2,8 +2,7 @@ import React from "react";
 
 // import { FaInstagram, FaLinkedin } from "react-icons/fa";// replace with your logo 
 import Logo from "@/public/Logo.svg";
-import { Linkedin } from "lucide-react";
-import { FaInstagram ,FaLinkedin} from "react-icons/fa";
+
 import Link from "next/link";
 
 const Footer = () => {
@@ -15,7 +14,8 @@ const Footer = () => {
       </div>
 
       {/* Navigation Links */}
-      <div className="flex space-x-8 text-xl font-medium">
+
+      <div className="flex space-x-8 text-[20px] font-medium">
         <a href="#" className="hover:text-gray-300">The Network</a>
         <a href="#" className="hover:text-gray-300">Explore Mental Health</a>
         <a href="#" className="hover:text-gray-300">About Us</a>
@@ -25,7 +25,7 @@ const Footer = () => {
       {/* Social Icons */}
       <div className="flex space-x-6">
         <a href="#">
-          <img src="/new/Group 40077 (1).png" alt="LinkedIn" className="h-12 w-116" />
+          <img src="/new/Group 40077 (1).png" alt="LinkedIn" className="h-10 w-116" />
         </a>
       </div>
     </footer>
