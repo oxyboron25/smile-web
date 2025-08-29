@@ -1,10 +1,18 @@
 "use client";
 
-import { useForm } from "react-hook-form";
+import { useForm, useFieldArray } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import Logo from "@/public/Logo.svg";
 
+const memberSchema = z.object({
+    role: z.string().min(1, "Select a role"),
+    name: z.string().min(1, "Please enter a name"),
+    email: z.string().email("Enter a valid email"),
+    phone: z.string().min(10, "Please enter a valid contact number"),
+    linkedin: z.string().url("Please enter a valid LinkedIn profile"),
+    discipline: z.string().min(1, "Please select one option"),
+    study: z.string().min(1, "Please select one option"),
+});
 
 const schema = z.object({
     university: z.string().min(1, "Please enter a valid university name"),
@@ -21,15 +29,11 @@ const schema = z.object({
         linkedin: z.string().url("Please enter a valid LinkedIn profile"),
     }),
 
-    foundingMember: z.object({
-        role: z.string().min(1, "Select a role"),
-        name: z.string().min(1, "Please enter a name"),
-        email: z.string().email("Enter a valid email"),
-        phone: z.string().min(10, "Please enter a valid contact number"),
-        linkedin: z.string().url("Please enter a valid LinkedIn profile"),
-        discipline: z.string().min(1, "Please select one option"),
-        study: z.string().min(1, "Please select one option")
-    }),
+    foundingMembers: z
+        .array(memberSchema)
+        .min(4, "At least 4 founding members are required")
+        .max(6, "Maximum 6 founding members allowed"),
+
     resume: z
         .any()
         .refine((files) => files?.length > 0, "Please upload a valid document"),
@@ -45,9 +49,23 @@ export default function Form() {
     const {
         register,
         handleSubmit,
+        control,
         formState: { errors },
     } = useForm<FormData>({
         resolver: zodResolver(schema),
+        defaultValues: {
+            foundingMembers: [
+                { role: "", name: "", email: "", phone: "", linkedin: "", discipline: "", study: "" },
+                { role: "", name: "", email: "", phone: "", linkedin: "", discipline: "", study: "" },
+                { role: "", name: "", email: "", phone: "", linkedin: "", discipline: "", study: "" },
+                { role: "", name: "", email: "", phone: "", linkedin: "", discipline: "", study: "" },
+            ],
+        },
+    });
+
+    const { fields, append, remove } = useFieldArray({
+        control,
+        name: "foundingMembers",
     });
 
     const onSubmit = (data: FormData) => {
@@ -55,7 +73,12 @@ export default function Form() {
     };
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} noValidate className="max-w-3xl mx-auto p-10 space-y-8 bg-black text-white">
+        <form
+            onSubmit={handleSubmit(onSubmit)}
+            noValidate
+            className="max-w-3xl mx-auto p-10 space-y-8 bg-black text-white"
+        >
+            {/* Hero */}
             <div className="bg-[#076461] p-6 text-start flex flex-col items-start gap-2 max-w-96">
                 <div className="flex items-center gap-5 justify-center">
                     <span className="text-5xl">Join</span>
@@ -63,7 +86,9 @@ export default function Form() {
                 </div>
                 <p className="text-lg font-medium">Launch Your Own SMILE Chapter</p>
             </div>
-            <p className="p-10 text-center text-gray-300 border-2 border-[#076461]">SMILE(Society for Mental Health Inclusivity, Literacy, & Empowerment) is a non-profit organization that aims to destigmatize mental health issues globally. We are committed to providing free resources and services in collaboration with other organizations to improve the mental health facilities and resources on college campuses across US, India, UK and soon the world.</p>
+            <p className="p-10 text-center text-gray-300 border-2 border-[#076461]">
+                SMILE(Society for Mental Health Inclusivity, Literacy, & Empowerment) is a non-profit organization that aims to destigmatize mental health issues globally. We are committed to providing free resources and services in collaboration with other organizations to improve the mental health facilities and resources on college campuses across US, India, UK and soon the world.
+            </p>
 
             {/* University Details */}
             <section>
@@ -224,264 +249,276 @@ export default function Form() {
                     </div>
                 </div>
             </section>
+
+            {/* Founding Members */}
             <section>
                 <h2 className="text-lg text-center text-black bg-teal-400 p-2">
                     Founding Members
                 </h2>
                 <h2 className="text-md text-center text-black bg-[#d0d398] p-3 mt-4 mb-4 rounded-lg">
-                    Please note you must have atleast 4 founding members to start your chapter.
+                    Please note you must have at least 4 founding members (max 6).
                 </h2>
-                {/* Role */}
-                <div className="mt-4 space-y-6">
 
-                    <div>
-                        <label
-                            className={`p-2 inline-block mb-2 border-2 ${errors?.foundingMember?.role ? "border-red-500" : "border-[#824909]"
-                                }`}
-                        >
-                            Select the Role*
-                        </label>
+                {fields.map((member, index) => (
+                    <div
+                        key={member.id}
+                        className="mt-6 space-y-6 border border-gray-600 p-4 rounded-lg relative"
+                    >
+                        <h3 className="text-teal-300">Member {index + 1}</h3>
 
-                        <div className="flex flex-wrap gap-6">
-                            {["President", "Vice President", "Director, Marketing", "Director, Projects"].map((role) => (
-                                <label key={role} className="flex items-center gap-2">
-                                    <input
-                                        type="radio"
-                                        value={role}
-                                        {...register("foundingMember.role", { required: true })}
-                                        className="accent-[#3ECF8E]"
-                                    />
-                                    {role}
-                                </label>
-                            ))}
-                        </div>
-
-                        {errors?.foundingMember?.role && (
-                            <p className="text-red-500 text-sm mt-1">Please select a role.</p>
-                        )}
-                    </div>
-
-
-                    {/* Name */}
-                    <div>
-                        <input
-                            {...register("foundingMember.name")}
-                            placeholder="Name*"
-                            className={`w-full p-2 rounded border-2 border-[#824909] ${errors.foundingMember?.name ? "border-red-500" : "border-[#824909]"
-                                } bg-transparent text-white placeholder-white`}
-                        />
-                        {errors.foundingMember?.name && (
-                            <p className="text-red-500 text-sm">{errors.foundingMember?.name.message}</p>
-                        )}
-                    </div>
-
-                    <div>
-                        <input
-                            {...register("foundingMember.email")}
-                            placeholder="E-Mail ID*"
-                            className={`w-full p-2 rounded border-2 border-[#824909] ${errors.foundingMember?.email ? "border-red-500" : "border-[#824909]"
-                                } bg-transparent text-white placeholder-white`}
-                        />
-                        {errors.foundingMember?.email && (
-                            <p className="text-red-500 text-sm">{errors.foundingMember?.email.message}</p>
-                        )}
-                    </div>
-
-                    {/* Contact + LinkedIn + Discipline */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        {/* Role */}
                         <div>
-                            <input
-                                type="text"
-                                placeholder="Contact Number*"
-                                {...register("foundingMember.phone", {
-                                    required: true,
-                                    pattern: /^[0-9]{10}$/,
-                                })}
-                                className={`w-full p-2 rounded border-2 border-[#824909] ${errors.foundingMember?.phone ? "border-red-500" : "border-[#824909]"
-                                    } bg-transparent text-white placeholder-white`}
-                            />
-                            <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-300">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="currentColor"
-                                    viewBox="0 0 24 24"
-                                    className="w-5 h-5"
-                                >
-                                    <path d="M6.62 10.79a15.464 15.464 0 006.59 6.59l2.2-2.2a1 1 0 011.05-.24c1.12.37 2.33.57 3.54.57a1 1 0 011 1v3.5a1 1 0 01-1 1C10.07 21 3 13.93 3 5.5a1 1 0 011-1H7.5a1 1 0 011 1c0 1.21.2 2.42.57 3.54a1 1 0 01-.24 1.05l-2.2 2.2z" />
-                                </svg>
-                            </span>
-                            {errors.foundingMember?.phone && (
-                                <p className="text-red-500 text-sm mt-1">
-                                    Please enter a valid contact number
-                                </p>
-                            )}
-                        </div>
-
-                        <div>
-                            <input
-                                type="url"
-                                placeholder="LinkedIn*"
-                                {...register("foundingMember.linkedin", {
-                                    required: true,
-                                    pattern: /^https?:\/\/(www\.)?linkedin\.com\/.+$/,
-                                })}
-                                className={`w-full p-2 rounded border-2 border-[#824909] ${errors.foundingMember?.linkedin ? "border-red-500" : "border-[#824909]"
-                                    } bg-transparent text-white placeholder-white`}
-                            />
-                            {errors.foundingMember?.linkedin && (
-                                <p className="text-red-500 text-sm mt-1">
-                                    Please enter a valid LinkedIn profile
-                                </p>
-                            )}
-                        </div>
-
-                        <div>
-                            <select
-                                {...register("foundingMember.discipline", { required: true })}
-                                defaultValue=""
-                                className={`w-full p-2 rounded border-2 bg-transparent ${errors.foundingMember?.discipline ? "border-red-500" : "border-[#824909]"
-                                    } placeholder-white`}
+                            <label
+                                className={`p-2 inline-block mb-2 border-2 ${errors?.foundingMembers?.[index]?.role
+                                    ? "border-red-500"
+                                    : "border-[#824909]"
+                                    }`}
                             >
-                                <option value="" disabled className="text-white">
+                                Select the Role*
+                            </label>
+                            <div className="flex flex-wrap gap-6">
+                                {[
+                                    "President",
+                                    "Vice President",
+                                    "Director, Marketing",
+                                    "Director, Projects",
+                                ].map((role) => (
+                                    <label key={role} className="flex items-center gap-2">
+                                        <input
+                                            type="radio"
+                                            value={role}
+                                            {...register(`foundingMembers.${index}.role`)}
+                                            className="accent-[#3ECF8E]"
+                                        />
+                                        {role}
+                                    </label>
+                                ))}
+                            </div>
+                            {errors.foundingMembers?.[index]?.role && (
+                                <p className="text-red-500 text-sm mt-1">
+                                    {errors.foundingMembers[index]?.role?.message as string}
+                                </p>
+                            )}
+                        </div>
+
+                        {/* Name */}
+                        <input
+                            {...register(`foundingMembers.${index}.name`)}
+                            placeholder="Name*"
+                            className={`w-full p-2 rounded border-2 ${errors.foundingMembers?.[index]?.name
+                                ? "border-red-500"
+                                : "border-[#824909]"
+                                } bg-transparent text-white placeholder-white`}
+                        />
+
+                        {/* Email */}
+                        <input
+                            {...register(`foundingMembers.${index}.email`)}
+                            placeholder="E-Mail ID*"
+                            className={`w-full p-2 rounded border-2 ${errors.foundingMembers?.[index]?.email
+                                ? "border-red-500"
+                                : "border-[#824909]"
+                                } bg-transparent text-white placeholder-white`}
+                        />
+
+                        {/* Phone + LinkedIn + Discipline */}
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <input
+                                {...register(`foundingMembers.${index}.phone`)}
+                                placeholder="Contact Number*"
+                                className={`w-full p-2 rounded border-2 ${errors.foundingMembers?.[index]?.phone
+                                    ? "border-red-500"
+                                    : "border-[#824909]"
+                                    } bg-transparent text-white placeholder-white`}
+                            />
+
+                            <input
+                                {...register(`foundingMembers.${index}.linkedin`)}
+                                placeholder="LinkedIn*"
+                                className={`w-full p-2 rounded border-2 ${errors.foundingMembers?.[index]?.linkedin
+                                    ? "border-red-500"
+                                    : "border-[#824909]"
+                                    } bg-transparent text-white placeholder-white`}
+                            />
+
+                            <select
+                                {...register(`foundingMembers.${index}.discipline`)}
+                                defaultValue=""
+                                className={`w-full p-2 rounded border-2 bg-transparent ${errors.foundingMembers?.[index]?.discipline
+                                    ? "border-red-500"
+                                    : "border-[#824909]"
+                                    }`}
+                            >
+                                <option value="" disabled className="text-black">
                                     Discipline*
                                 </option>
-                                <option value="CSE" className="text-black">CSE</option>
-                                <option value="ECE" className="text-black">ECE</option>
-                                <option value="Mechanical" className="text-black">Mechanical</option>
+                                <option value="CSE" className="text-black">
+                                    CSE
+                                </option>
+                                <option value="ECE" className="text-black">
+                                    ECE
+                                </option>
+                                <option value="Mechanical" className="text-black">
+                                    Mechanical
+                                </option>
                             </select>
-                            {errors.foundingMember?.discipline && (
+                        </div>
+
+                        {/* Study Level */}
+                        <div>
+                            <label
+                                className={`inline-block p-2 mb-2 border-2 rounded ${errors.foundingMembers?.[index]?.study
+                                    ? "border-red-500"
+                                    : "border-[#824909]"
+                                    }`}
+                            >
+                                Current level of study*
+                            </label>
+                            <div className="grid grid-cols-2 gap-4">
+                                {[
+                                    "Undergraduate-First Year",
+                                    "Undergraduate-Second Year",
+                                    "Undergraduate-Third Year",
+                                    "Undergraduate-Fourth Year",
+                                    "Postgraduate-Masters",
+                                    "Postgraduate-Doctoral",
+                                ].map((study) => (
+                                    <label key={study} className="flex items-center gap-3">
+                                        <input
+                                            type="radio"
+                                            value={study}
+                                            {...register(`foundingMembers.${index}.study`)}
+                                            className="accent-[#3ECF8E]"
+                                        />
+                                        {study}
+                                    </label>
+                                ))}
+                            </div>
+                            {errors.foundingMembers?.[index]?.study && (
                                 <p className="text-red-500 text-sm mt-1">
-                                    Please select one option
+                                    {errors.foundingMembers[index]?.study?.message as string}
                                 </p>
                             )}
                         </div>
+
+                        {/* Remove Button */}
+                        {fields.length > 4 && (
+                            <button
+                                type="button"
+                                onClick={() => remove(index)}
+                                className="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded text-xs"
+                            >
+                                Remove
+                            </button>
+                        )}
                     </div>
-                    <div>
-                        <label className="inline-block p-2 mb-2 border-2 border-[#824909]">Current level of study*</label>
-                        <div className="grid grid-cols-2 gap-4">
-                            {[
-                                "Undergraduate-First Year",
-                                "Undergraduate-Second Year",
-                                "Undergraduate-Third Year",
-                                "Undergraduate-Fourth Year",
-                                "Postgraduate-Masters",
-                                "Postgraduate-Doctoral",
-                            ].map((study) => (
-                                <label key={study} className="flex items-center gap-3">
-                                    <input
-                                        type="radio"
-                                        value={study}
-                                        {...register("foundingMember.role", { required: true })}
-                                        className="accent-[#3ECF8E]"
-                                    />
-                                    {study}
-                                </label>
-                            ))}
-                        </div>
-                    </div>
+                ))}
 
-                    {errors.foundingMember?.study && (
-                        <p className="text-red-500 text-sm mt-1">Please select one option</p>
-                    )}
-                    {/* File Uploads */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div className="flex flex-col">
+                {/* Add Member Button */}
+                {fields.length < 6 && (
+                    <button
+                        type="button"
+                        onClick={() =>
+                            append({
+                                role: "",
+                                name: "",
+                                email: "",
+                                phone: "",
+                                linkedin: "",
+                                discipline: "",
+                                study: "",
+                            })
+                        }
+                        className="mt-4 bg-[#076461] px-4 py-2 rounded text-white"
+                    >
+                        + Add Member
+                    </button>
+                )}
+            </section>
 
-                            <label className="flex items-center justify-between border-2 border-[#824909] p-2 text-white rounded">
-                                Resume*
-                                <input type="file" {...register("resume")} className="hidden" />
-                                <span className="text-gray-300">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        strokeWidth={1.5}
-                                        stroke="currentColor"
-                                        className="w-5 h-5"
-                                    >
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 16.5V9.75m0 0L8.25 13.5m3.75-3.75 3.75 3.75M4.5 19.5h15" />
-                                    </svg>
-                                </span>
-                            </label>
-                            {errors.resume && (
-                                <p className="text-red-500 text-sm mt-1">{String(errors.resume.message)}</p>
-                            )}
-                        </div>
-                        <div className="flex flex-col">
-
-                            <label className="flex items-center justify-between border-2 border-[#824909] rounded p-2 text-white">
-                                Proof of University Affiliation*
-                                <input type="file" {...register("proof")} className="hidden" />
-                                <span className="text-gray-300">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        strokeWidth={1.5}
-                                        stroke="currentColor"
-                                        className="w-5 h-5"
-                                    >
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 16.5V9.75m0 0L8.25 13.5m3.75-3.75 3.75 3.75M4.5 19.5h15" />
-                                    </svg>
-                                </span>
-                            </label>
-                            {errors.resume && (
-                                <p className="text-red-500 text-sm mt-1">{String(errors.proof?.message)}</p>
-                            )}
-                        </div>
+            {/* File Uploads */}
+            <section>
+                <h2 className="text-lg text-center text-black bg-teal-400 p-2">Uploads</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                    {/* Resume */}
+                    <div className="flex flex-col">
+                        <label
+                            className={`flex items-center justify-between p-2 text-white rounded border-2 ${errors.resume ? "border-red-500" : "border-[#824909]"
+                                }`}
+                        >
+                            Resume*
+                            <input type="file" {...register("resume")} className="hidden" />
+                            <span className="text-gray-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                                    <path strokeLinecap="round" strokeLinejoin="round"
+                                        d="M12 16.5V9.75m0 0L8.25 13.5m3.75-3.75 3.75 3.75M4.5 19.5h15" />
+                                </svg>
+                            </span>
+                        </label>
+                        {errors.resume && <p className="text-red-500 text-sm mt-1">{String(errors.resume.message)}</p>}
                     </div>
 
+                    {/* Proof */}
+                    <div className="flex flex-col">
+                        <label
+                            className={`flex items-center justify-between p-2 text-white rounded border-2 ${errors.proof ? "border-red-500" : "border-[#824909]"
+                                }`}
+                        >
+                            Proof of University Affiliation*
+                            <input type="file" {...register("proof")} className="hidden" />
+                            <span className="text-gray-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                                    <path strokeLinecap="round" strokeLinejoin="round"
+                                        d="M12 16.5V9.75m0 0L8.25 13.5m3.75-3.75 3.75 3.75M4.5 19.5h15" />
+                                </svg>
+                            </span>
+                        </label>
+                        {errors.proof && <p className="text-red-500 text-sm mt-1">{String(errors.proof.message)}</p>}
+                    </div>
                 </div>
-                <div className="mt-6 space-y-10">
+            </section>
 
-                    {/* Chapter Plan */}
-                    <div className="mt-20">
-                        <textarea
-                            rows={6}
-                            className="w-full rounded-xl border border-gray-400 bg-gray-700/50 text-white placeholder-gray-300 px-4 py-3 focus:ring-2 focus:ring-[#3ECF8E] focus:border-[#3ECF8E] outline-none"
-                            placeholder="Chapter Plan*"
-                        ></textarea>
-                    </div>
+            {/* Chapter Plan + Declaration */}
+            <section className="mt-10 space-y-10">
+                <textarea
+                    rows={6}
+                    className="w-full rounded-xl border border-gray-400 bg-gray-700/50 text-white placeholder-gray-300 px-4 py-3 focus:ring-2 focus:ring-[#3ECF8E] focus:border-[#3ECF8E] outline-none"
+                    placeholder="Chapter Plan*"
+                ></textarea>
 
-                    {/* Declaration */}
-                    <div className="space-y-4">
-                        {/* Declaration */}
-                        <div>
-                            <label className="text-white font-small">Declaration of truthfulness*</label>
-                            <div className="flex items-start gap-3 mt-1">
-                                <input
-                                    type="checkbox"
-                                    className="mt-1 accent-[#3ECF8E] "
-                                />
-                                <span className="text-[#17959e]">
-                                    I declare that the information provided is true and accurate to the best of my knowledge.
-                                </span>
-                            </div>
-                        </div>
-
-                        {/* Consent */}
-                        <div>
-                            <label className="text-white font-small">Consent*</label>
-                            <div className="flex items-start gap-3 mt-1">
-                                <input
-                                    type="checkbox"
-                                    className="mt-1 accent-[#3ECF8E] "
-                                />
-                                <span className="text-[#17959e]">
-                                    I consent to having my information processed by SMILE and shared with SMILE’s members and/or partners.
-                                    Your data will be used to process your request, generate statistics, and promote SMILE, its members, and partners.
-                                </span>
-                            </div>
+                {/* Declaration */}
+                <div className="space-y-4">
+                    <div>
+                        <label className="text-white font-small">Declaration of truthfulness*</label>
+                        <div className="flex items-start gap-3 mt-1">
+                            <input type="checkbox" className="mt-1 accent-[#3ECF8E]" />
+                            <span className="text-[#17959e]">
+                                I declare that the information provided is true and accurate to the best of my knowledge.
+                            </span>
                         </div>
                     </div>
 
+                    <div>
+                        <label className="text-white font-small">Consent*</label>
+                        <div className="flex items-start gap-3 mt-1">
+                            <input type="checkbox" className="mt-1 accent-[#3ECF8E]" />
+                            <span className="text-[#17959e]">
+                                I consent to having my information processed by SMILE and shared with SMILE’s members and/or partners. Your data will be used to process your request, generate statistics, and promote SMILE, its members, and partners.
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </section>
 
             {/* Submit */}
-            <button type="submit" className=" bg-gray-400 px-5 py-2 mx-auto justify-center flex items-center text-black font-medium rounded">
+            <button
+                type="submit"
+                className="bg-gray-400 px-5 py-2 mx-auto justify-center flex items-center text-black font-medium rounded"
+            >
                 Submit
             </button>
-        </form >
+        </form>
     );
 }
