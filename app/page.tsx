@@ -14,6 +14,7 @@ import Button from "./_components/Start-Your-Branch";
 import OurBranches from "./_components/OurBranches";
 import OpenYourBranch from "./_components/openyourbranch";
 import MentorCarousel from "./_components/mentor";
+// import Form from "./_components/form"
 import JoinSmile from "./_components/colleges";
 import GlobalNetworks from "./_components/map";
 import InsightsSection from "./_components/insights";
@@ -32,6 +33,7 @@ import Navbar from "./_components/navbar";
 import Footer from "./_components/footer";
 import BannerImage from "./_components/banner";
 import StatsBox from "./_components/box";
+
 
 
 
@@ -68,15 +70,6 @@ export default function Home() {
       <InsightsSection />
       <Faqs />
       <Footer />
-
-      
-      
-      
-      
-
-      {/* <Timeline /> */}
-      {/* <Contribute /> */}
-      {/* <Contact /> */}
     </main>
   );
 }
