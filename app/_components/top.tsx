@@ -19,21 +19,21 @@ const Navbar = () => {
 
         {/* Desktop Links (md+) */}
         <div className="hidden md:flex space-x-6 lg:space-x-10 font-medium">
-          <div className="flex items-center text-[27px] space-x-1 cursor-pointer hover:text-gray-300">
+          <div className="flex items-center text-[16px] space-x-1 cursor-pointer hover:text-gray-300">
             <span>The Network</span>
             <ChevronDown className="w-4 h-4" />
           </div>
-          <div className="flex items-center text-[27px] space-x-1 cursor-pointer hover:text-gray-300">
+          <div className="flex items-center text-[16px] space-x-1 cursor-pointer hover:text-gray-300">
             <span>Explore Mental Health</span>
             <ChevronDown className="w-4 h-4" />
           </div>
-          <span className="cursor-pointer text-[27px] hover:text-gray-300">
+          <span className="cursor-pointer text-[16px] hover:text-gray-300">
             About Us
           </span>
         </div>
 
         {/* Desktop Button (md+) */}
-        <button className="hidden md:flex bg-white text-black rounded-xl px-5 py-2 text-[35px] font-light flex items-center gap-1 hover:bg-gray-200 transition">
+        <button className="hidden md:flex bg-white text-black rounded-xl px-5 py-2 text-[18px] font-light  items-center gap-1 hover:bg-gray-200 transition">
           <Link href="/form" target="_blank">
             Start a Chapter ↗
           </Link>
@@ -97,7 +97,7 @@ const Hero = () => {
           resources to students who require mental health support.
         </p>
 
-        <button className="mt-4 sm:mt-6 md:mt-12 bg-white text-black rounded-xl px-4 py-2 text-sm sm:px-5 sm:py-2 sm:text-base md:px-6 md:py-3 md:text-[35] font-light flex items-center gap-1 hover:bg-gray-200 transition">
+        <button className="mt-4 sm:mt-6 md:mt-12 bg-white text-black rounded-xl px-4 py-2 text-sm sm:px-5 sm:py-2 sm:text-base md:px-6 md:py-3 md:text-[18px] font-light flex items-center gap-1 hover:bg-gray-200 transition">
           <Link href="/form" target="_blank">
             Start a Chapter ↗
           </Link>
