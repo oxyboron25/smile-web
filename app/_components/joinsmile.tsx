@@ -63,13 +63,14 @@ const JoinSmileSection: React.FC = () => {
                 alt="Mentor"
                 className="w-full h-full object-cover"
               />
-              <div className="absolute bottom-3 sm:bottom-4 left-1/2 sm:left-4 -translate-x-1/2 sm:translate-x-0 text-white text-sm sm:text-lg lg:text-xl text-center sm:text-left">
+              {/* ✅ Always left aligned text */}
+              <div className="absolute bottom-3 left-3 text-white text-sm sm:text-lg lg:text-xl text-left">
                 Become a <i>Mentor</i>
               </div>
               <img
                 src="/new/Group 40058.png"
                 alt="Arrow"
-                className="absolute bottom-3 right-1/2 sm:right-3 translate-x-1/2 sm:translate-x-0 w-8 h-8 sm:w-9 sm:h-9 cursor-pointer"
+                className="absolute bottom-3 right-3 w-8 h-8 sm:w-9 sm:h-9 cursor-pointer"
               />
             </div>
           </div>
@@ -112,6 +113,7 @@ const JoinSmileSection: React.FC = () => {
 };
 
 export default JoinSmileSection;
+
 
 
 

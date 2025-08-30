@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
 import Link from "next/link";
 
-
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   return (
@@ -52,7 +51,7 @@ const Navbar = () => {
       </div>
       {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="md:hidden bg-[#001612] px-4 pb-4 mt-2 space-y-3 text-center">
+        <div className="md:hidden bg-[#001612] px-4 pb-4 mt-2 text-center space-y-4">
           <Link href="#mentors" scroll={true} className="block text-base hover:text-gray-300">
             The Network
           </Link>
@@ -115,11 +114,18 @@ const Hero = () => {
 const Homepage = () => {
   return (
     <div className="bg-[#001612] min-h-full md:min-h-screen pt-[2vh] pb-0 md:pt-[2vh] md:pb-0">
-      <Navbar />
-      <Hero />
+      {/* Mobile-only spacing between Navbar and Hero */}
+      <div className="md:mb-0 mb-6">
+        <Navbar />
+      </div>
+
+      {/* Add mobile-only bottom margin to Hero to prevent overlapping with next section */}
+      <div className="md:mt-0 mt-6 md:mb-0 mb-32">
+        <Hero />
+      </div>
     </div>
   );
 };
 
-export default Homepage;
 
+export default Homepage;
