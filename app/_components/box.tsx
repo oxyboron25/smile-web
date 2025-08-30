@@ -11,7 +11,7 @@ const StatsSection: React.FC = () => {
       <div className="max-w-5xl mx-auto">
         {/* White Box */}
         <div className="bg-white rounded-xl shadow-xl p-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          <div className="grid grid-cols-4 gap-6 text-center">
             {/* Stat 1 */}
             <div>
               <h3 className="text-2xl md:text-3xl font-bold">5K+</h3>
@@ -43,3 +43,4 @@ const StatsSection: React.FC = () => {
 };
 
 export default StatsSection;
+
