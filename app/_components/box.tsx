@@ -3,9 +3,9 @@ import React from "react";
 const StatsSection: React.FC = () => {
   return (
     <section
-      className="py-2"
+      className="pt-0 pb-6" // no space at top, small space at bottom
       style={{
-        background: "linear-gradient(to bottom, #001612 50%, #132E31 50%)", // top half and bottom half colors
+        background: "linear-gradient(to bottom, #001612 50%, #132E31 50%)",
       }}
     >
       <div className="max-w-5xl mx-auto">
@@ -43,4 +43,5 @@ const StatsSection: React.FC = () => {
 };
 
 export default StatsSection;
+
 

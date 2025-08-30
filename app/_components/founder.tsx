@@ -3,7 +3,10 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 
 const FounderStories: React.FC = () => {
   return (
-    <section className="bg-[#121212] text-white px-6 md:px-20 py-16">
+    <section
+      id="founders"
+      className="bg-[#121212] text-white px-6 md:px-20 py-16"
+    >
       {/* Top Row */}
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center text-center md:text-left">
         {/* Right Heading (shown above on mobile) */}
@@ -29,11 +32,11 @@ const FounderStories: React.FC = () => {
       {/* Founder Card */}
       <div className="mt-12 mx-6 md:mx-12 bg-white text-black rounded-xl shadow-md p-6 md:p-10 flex flex-col md:flex-row gap-8 items-center">
         {/* Image */}
-        <div className="w-full md:w-1/3 flex-shrink-0">
+        <div className="w-full md:w-1/3 flex-shrink-0 flex justify-center md:justify-start">
           <img
-            src="/new/Group 40063 (1).png" // replace with actual image path
+            src="/new/Group 40063 (1).png"
             alt="Founder"
-            className="rounded-lg w-full bg-[#7D7D7D] object-cover"
+            className="rounded-lg w-3/4 sm:w-2/3 md:w-full max-w-[250px] md:max-w-full h-auto bg-[#7D7D7D] object-cover"
           />
         </div>
 
@@ -78,4 +81,6 @@ const FounderStories: React.FC = () => {
 };
 
 export default FounderStories;
+
+
 
