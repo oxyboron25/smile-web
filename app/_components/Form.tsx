@@ -94,10 +94,80 @@ export default function Form() {
         control,
         name: "foundingMembers",
     });
-
-    const onSubmit = (data: FormData) => {
-        console.log("Form submitted:", data);
+    const roleMap: Record<string, string> = {
+        "President": "president",
+        "Vice President": "vice_president",
+        "Director, Marketing": "director_marketing",
+        "Director, Projects": "director_projects",
     };
+
+    const studyMap: Record<string, string> = {
+        "Undergraduate-First Year": "ug_1",
+        "Undergraduate-Second Year": "ug_2",
+        "Undergraduate-Third Year": "ug_3",
+        "Undergraduate-Fourth Year": "ug_4",
+        "Postgraduate-Masters": "pg_masters",
+        "Postgraduate-Doctoral": "pg_doctoral",
+    };
+
+    const onSubmit = async (data: FormData) => {
+        const payload = {
+            university_chapter: {
+                university: {
+                    id: null,
+                    name: data.university,
+                    address: data.address,
+                    district: data.district,
+                    state: data.state,
+                    pin_code: data.pincode,
+                    website: data.website,
+                },
+                point_of_contact: {
+                    id: null,
+                    contact: {
+                        id: null,
+                        name: data.contact.name,
+                        email: data.contact.email,
+                        phone_number: "+91" + data.contact.phone,
+                        linkedin: data.contact.linkedin,
+                    },
+                },
+                founding_members: data.foundingMembers.map((m) => ({
+                    id: null,
+                    contact: {
+                        id: null,
+                        name: m.name,
+                        email: m.email,
+                        phone_number: "+91" + m.phone,
+                        linkedin: m.linkedin,
+                    },
+                    role: roleMap[m.role] || m.role,
+                    current_level_of_study: studyMap[m.study] || m.study,
+                    discipline: m.discipline,
+                    resume: null, // update later if you want file uploads
+                    proof_of_association: null,
+                })),
+            },
+        };
+
+        try {
+            const res = await fetch("https://smile-forms.onrender.com", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(payload),
+            });
+
+            if (!res.ok) throw new Error("Failed to submit");
+
+            const result = await res.json();
+            console.log("✅ Submitted successfully:", result);
+        } catch (err) {
+            console.error("❌ Submission error:", err);
+        }
+    };
+
 
     return (
         <form
@@ -106,20 +176,20 @@ export default function Form() {
             className="p-10 space-y-8 bg-black text-white"
         >
             {/* Hero */}
-            <div className="bg-[#076461] p-6 text-start flex flex-col items-start gap-2 max-w-96">
+            <div className="bg-[#5DA399] p-6 text-start flex flex-col items-start gap-2 max-w-96">
                 <div className="flex items-center gap-5 justify-center">
                     <span className="text-5xl">Join</span>
                     <img src="/new/logo.png" alt="SMILE Logo" className="h-10 w-auto" />
                 </div>
                 <p className="text-lg font-medium">Launch Your Own SMILE Chapter</p>
             </div>
-            <p className="p-10 text-center text-gray-300 border-2 border-[#076461]">
+            <p className="p-10 text-center text-gray-300 border-2 border-[#2F5D56]">
                 SMILE(Society for Mental Health Inclusivity, Literacy, & Empowerment) is a non-profit organization that aims to destigmatize mental health issues globally. We are committed to providing free resources and services in collaboration with other organizations to improve the mental health facilities and resources on college campuses across US, India, UK and soon the world.
             </p>
 
             {/* University Details */}
             <section>
-                <h2 className="text-lg text-center text-black bg-teal-400 p-2">
+                <h2 className="text-lg text-center text-black bg-[#7ED7CA] p-2">
                     University Details
                 </h2>
 
@@ -128,8 +198,8 @@ export default function Form() {
                         <input
                             {...register("university")}
                             placeholder="Name of University*"
-                            className={`w-full p-2 rounded border-2 border-[#824909] ${errors.university ? "border-red-500" : "border-[#824909]"
-                                } bg-transparent text-white placeholder-white focus:outline-none focus:ring-0 focus:border-[#824909]`}
+                            className={`w-full p-2 rounded border-2 border-[#6F5252] ${errors.university ? "border-red-500" : "border-[#6F5252]"
+                                } bg-transparent text-white placeholder-white focus:outline-none focus:ring-0 focus:border-[#6F5252]`}
                         />
                         {errors.university && (
                             <p className="text-red-500 text-sm">{errors.university.message}</p>
@@ -140,7 +210,7 @@ export default function Form() {
                         <input
                             {...register("address")}
                             placeholder="Address*"
-                            className={`w-full p-2 rounded border-2 border-[#824909] ${errors.address ? "border-red-500" : "border-[#824909]"
+                            className={`w-full p-2 rounded border-2 border-[#6F5252] ${errors.address ? "border-red-500" : "border-[#6F5252]"
                                 } bg-transparent text-white placeholder-white`}
                         />
                         {errors.address && (
@@ -153,7 +223,7 @@ export default function Form() {
                         <div className="flex flex-col">
                             <select
                                 {...register("state")}
-                                className={`p-2 rounded border-2 border-[#824909] ${errors.state ? "border-red-500" : "border-[#824909]"
+                                className={`p-2 rounded border-2 border-[#6F5252] ${errors.state ? "border-red-500" : "border-[#6F5252]"
                                     } bg-transparent placeholder-white`}
                             >
                                 <option value="" className="text-black">State*</option>
@@ -172,7 +242,7 @@ export default function Form() {
                             <input
                                 {...register("pincode")}
                                 placeholder="Pincode*"
-                                className={`w-full p-2 rounded border-2 ${errors.pincode ? "border-red-500" : "border-[#824909]"
+                                className={`w-full p-2 rounded border-2 ${errors.pincode ? "border-red-500" : "border-[#6F5252]"
                                     } bg-transparent text-white placeholder-white`}
                             />
                             {errors.pincode?.message && (
@@ -185,7 +255,7 @@ export default function Form() {
                             <input
                                 {...register("district")}
                                 placeholder="District*"
-                                className={`w-full p-2 rounded border-2 ${errors.district ? "border-red-500" : "border-[#824909]"
+                                className={`w-full p-2 rounded border-2 ${errors.district ? "border-red-500" : "border-[#6F5252]"
                                     } bg-transparent text-white placeholder-white`}
                             />
                             {errors.district?.message && (
@@ -200,7 +270,7 @@ export default function Form() {
                         <input
                             {...register("website")}
                             placeholder="University Website Link*"
-                            className={`w-full p-2 rounded border-2 border-[#824909] ${errors.website ? "border-red-500" : "border-[#824909]"
+                            className={`w-full p-2 rounded border-2 border-[#6F5252] ${errors.website ? "border-red-500" : "border-[#6F5252]"
                                 } bg-transparent text-white placeholder-white`}
                         />
                         {errors.website && (
@@ -212,7 +282,7 @@ export default function Form() {
 
             {/* Point of Contact */}
             <section>
-                <h2 className="text-lg text-center text-black bg-teal-400 p-2">
+                <h2 className="text-lg text-center text-black bg-[#7ED7CA] p-2">
                     Point of Contact
                 </h2>
 
@@ -221,7 +291,7 @@ export default function Form() {
                         <input
                             {...register("contact.name")}
                             placeholder="Name*"
-                            className={`w-full p-2 rounded border-2 border-[#824909] ${errors.contact?.name ? "border-red-500" : "border-[#824909]"
+                            className={`w-full p-2 rounded border-2 border-[#6F5252] ${errors.contact?.name ? "border-red-500" : "border-[#6F5252]"
                                 } bg-transparent text-white placeholder-white`}
                         />
                         {errors.contact?.name && (
@@ -233,7 +303,7 @@ export default function Form() {
                         <input
                             {...register("contact.email")}
                             placeholder="E-Mail ID*"
-                            className={`w-full p-2 rounded border-2 border-[#824909] ${errors.contact?.email ? "border-red-500" : "border-[#824909]"
+                            className={`w-full p-2 rounded border-2 border-[#6F5252] ${errors.contact?.email ? "border-red-500" : "border-[#6F5252]"
                                 } bg-transparent text-white placeholder-white`}
                         />
                         {errors.contact?.email && (
@@ -256,7 +326,7 @@ export default function Form() {
                                     onInput={(e) => {
                                         e.currentTarget.value = e.currentTarget.value.replace(/[^0-9]/g, "");
                                     }}
-                                    className={`w-full p-2 pr-10 rounded border-2 ${errors.contact?.phone ? "border-red-500" : "border-[#824909]"
+                                    className={`w-full p-2 pr-10 rounded border-2 ${errors.contact?.phone ? "border-red-500" : "border-[#6F5252]"
                                         } bg-transparent text-white placeholder-white`}
                                 />
 
@@ -286,7 +356,7 @@ export default function Form() {
                             <input
                                 {...register("contact.linkedin")}
                                 placeholder="LinkedIn*"
-                                className={`w-full p-2 rounded border-2 border-[#824909] ${errors.contact?.linkedin ? "border-red-500" : "border-[#824909]"
+                                className={`w-full p-2 rounded border-2 border-[#6F5252] ${errors.contact?.linkedin ? "border-red-500" : "border-[#6F5252]"
                                     } bg-transparent text-white placeholder-white`}
                             />
                             {errors.contact?.linkedin && (
@@ -300,10 +370,10 @@ export default function Form() {
 
             {/* Founding Members */}
             <section>
-                <h2 className="text-lg text-center text-black bg-teal-400 p-2">
+                <h2 className="text-lg text-center text-black bg-[#7ED7CA] p-2">
                     Founding Members
                 </h2>
-                <h2 className="text-md text-center text-black bg-[#d0d398] p-3 mt-4 mb-4 rounded-lg">
+                <h2 className="text-md text-center text-black bg-[#DADAB1] p-3 mt-4 mb-4 rounded-lg">
                     Please note you must have at least 4 founding members (max 6).
                 </h2>
 
@@ -312,6 +382,7 @@ export default function Form() {
                         control,
                         name: `foundingMembers.${index}.role`,
                     });
+                    const allRoles = useWatch({ control, name: "foundingMembers" }).map(m => m.role);
 
                     const studyValue = useWatch({
                         control,
@@ -329,29 +400,31 @@ export default function Form() {
                                 <label
                                     className={`p-2 inline-block mb-2 border-2 ${errors?.foundingMembers?.[index]?.role
                                         ? "border-red-500"
-                                        : "border-[#824909]"
+                                        : "border-[#6F5252]"
                                         }`}
                                 >
 
                                     {roleValue ? `Role: ${roleValue}` : "Select the Role*"}
                                 </label>
                                 <div className="flex flex-wrap gap-6">
-                                    {[
-                                        "President",
-                                        "Vice President",
-                                        "Director, Marketing",
-                                        "Director, Projects",
-                                    ].map((role) => (
-                                        <label key={role} className="flex items-center gap-2">
-                                            <input
-                                                type="radio"
-                                                value={role}
-                                                {...register(`foundingMembers.${index}.role`)}
-                                                className="accent-[#3ECF8E]"
-                                            />
-                                            {role}
-                                        </label>
-                                    ))}
+                                    {["President", "Vice President", "Director, Marketing", "Director, Projects"].map((role) => {
+                                        const isTaken = allRoles.includes(role) && roleValue !== role;
+                                        return (
+                                            <label key={role} className="flex items-center gap-2">
+                                                <input
+                                                    type="radio"
+                                                    value={role}
+                                                    {...register(`foundingMembers.${index}.role`)}
+                                                    className="accent-[#3ECF8E]"
+                                                    disabled={isTaken}   // 🚨 Disable if role already taken
+                                                />
+                                                <span className={isTaken ? "line-through text-gray-500" : ""}>
+                                                    {role}
+                                                </span>
+                                            </label>
+                                        );
+                                    })}
+
                                 </div>
                                 {errors.foundingMembers?.[index]?.role && (
                                     <p className="text-red-500 text-sm mt-1">
@@ -366,7 +439,7 @@ export default function Form() {
                                 placeholder="Name*"
                                 className={`w-full p-2 rounded border-2 ${errors.foundingMembers?.[index]?.name
                                     ? "border-red-500"
-                                    : "border-[#824909]"
+                                    : "border-[#6F5252]"
                                     } bg-transparent text-white placeholder-white`}
                             />
 
@@ -376,7 +449,7 @@ export default function Form() {
                                 placeholder="E-Mail ID*"
                                 className={`w-full p-2 rounded border-2 ${errors.foundingMembers?.[index]?.email
                                     ? "border-red-500"
-                                    : "border-[#824909]"
+                                    : "border-[#6F5252]"
                                     } bg-transparent text-white placeholder-white`}
                             />
 
@@ -397,7 +470,7 @@ export default function Form() {
                                         }}
                                         className={`w-full p-2 pr-10 rounded border-2 ${errors.foundingMembers?.[index]?.phone
                                             ? "border-red-500"
-                                            : "border-[#824909]"
+                                            : "border-[#6F5252]"
                                             } bg-transparent text-white placeholder-white`}
                                     />
 
@@ -430,7 +503,7 @@ export default function Form() {
                                     placeholder="LinkedIn*"
                                     className={`w-full p-2 rounded border-2 ${errors.foundingMembers?.[index]?.linkedin
                                         ? "border-red-500"
-                                        : "border-[#824909]"
+                                        : "border-[#6F5252]"
                                         } bg-transparent text-white placeholder-white`}
                                 />
 
@@ -440,7 +513,7 @@ export default function Form() {
                                     placeholder="Discipline*"
                                     className={`w-full p-2 rounded border-2 ${errors.foundingMembers?.[index]?.discipline
                                         ? "border-red-500"
-                                        : "border-[#824909]"
+                                        : "border-[#6F5252]"
                                         } bg-transparent text-white placeholder-white`}
                                 />
                                 {errors.foundingMembers?.[index]?.discipline && (
@@ -456,7 +529,7 @@ export default function Form() {
                                 <label
                                     className={`inline-block p-2 mb-2 border-2 rounded ${errors.foundingMembers?.[index]?.study
                                         ? "border-red-500"
-                                        : "border-[#824909]"
+                                        : "border-[#6F5252]"
                                         }`}
                                 >
                                     {studyValue
@@ -528,12 +601,12 @@ export default function Form() {
 
             {/* File Uploads */}
             <section>
-                <h2 className="text-lg text-center text-black bg-teal-400 p-2">Uploads</h2>
+                <h2 className="text-lg text-center text-black bg-[#7ED7CA] p-2">Uploads</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
                     {/* Resume */}
                     <div className="flex flex-col">
                         <label
-                            className={`flex items-center justify-between p-2 text-white rounded border-2 cursor-pointer ${errors.resume ? "border-red-500" : "border-[#824909]"
+                            className={`flex items-center justify-between p-2 text-white rounded border-2 cursor-pointer ${errors.resume ? "border-red-500" : "border-[#6F5252]"
                                 }`}
                         >
                             Resume*
@@ -552,7 +625,7 @@ export default function Form() {
                     {/* Proof */}
                     <div className="flex flex-col">
                         <label
-                            className={`flex items-center justify-between p-2 text-white rounded border-2 cursor-pointer ${errors.proof ? "border-red-500" : "border-[#824909]"
+                            className={`flex items-center justify-between p-2 text-white rounded border-2 cursor-pointer ${errors.proof ? "border-red-500" : "border-[#6F5252]"
                                 }`}
                         >
                             Proof of University Affiliation*
@@ -599,7 +672,7 @@ export default function Form() {
                             {...register("declaration")}
                             className="mt-1 accent-[#3ECF8E]"
                         />
-                        <span className="text-[#17959e]">
+                        <span className="text-[#7ED7CA]">
                             I declare that the information provided is true and accurate to the
                             best of my knowledge.
                         </span>
@@ -619,7 +692,7 @@ export default function Form() {
                             {...register("consent")}
                             className="mt-1 accent-[#3ECF8E]"
                         />
-                        <span className="text-[#17959e]">
+                        <span className="text-[#7ED7CA]">
                             I consent to having my information processed by SMILE and shared with
                             SMILE’s members and/or partners. Your data will be used to process
                             your request, generate statistics, and promote SMILE, its members, and
