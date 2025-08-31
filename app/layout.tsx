@@ -7,7 +7,7 @@ import { useScroll } from "framer-motion";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Society for Mental health Inclusivity, Literacy and Empowerment",
+  title: "SMILE : Society for Mental health Inclusivity, Literacy and Empowerment",
   description: "",
 };
 
