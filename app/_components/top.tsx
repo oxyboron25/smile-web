@@ -5,7 +5,7 @@ import Link from "next/link";
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   return (
-    <nav className="bg-[#001612] text-white py-1 px-3 sm:px-4 md:px-16">
+    <nav className="sticky top-0 z-50 bg-[#001612] text-white py-1 px-3 sm:px-4 md:px-16">
       <div className="flex justify-between items-center max-w-screen-2xl mx-auto ml-2 md:ml-16 mr-2 md:mr-20">
         {/* Logo */}
         <div className="flex items-center">
@@ -24,11 +24,16 @@ const Navbar = () => {
             <ChevronDown className="w-4 h-4" />
           </div>
           <div className="flex items-center text-[16px] space-x-1 cursor-pointer hover:text-gray-300">
-            <span>Explore Mental Health</span>
+            <span>
+              Explore Mental Health
+              </span>
             <ChevronDown className="w-4 h-4" />
           </div>
           <span className="cursor-pointer text-[16px] hover:text-gray-300">
-            About Us
+            <Link href="#founders" scroll={true}>
+              About Us
+            </Link>
+            
           </span>
         </div>
         {/* Desktop Button */}
@@ -114,18 +119,17 @@ const Hero = () => {
 const Homepage = () => {
   return (
     <div className="bg-[#001612] min-h-full md:min-h-screen pt-[2vh] pb-0 md:pt-[2vh] md:pb-0">
-      {/* Mobile-only spacing between Navbar and Hero */}
-      <div className="md:mb-0 mb-6">
-        <Navbar />
-      </div>
+      
+      {/* Navbar directly inside the top-level container */}
+      <Navbar />
 
-      {/* Add mobile-only bottom margin to Hero to prevent overlapping with next section */}
-      <div className="md:mt-0 mt-6 md:mb-0 mb-32">
-        <Hero />
-      </div>
+      {/* Hero Section */}
+      <Hero />
+
     </div>
   );
 };
 
 
 export default Homepage;
+

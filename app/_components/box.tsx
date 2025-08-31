@@ -14,25 +14,25 @@ const StatsSection: React.FC = () => {
           <div className="grid grid-cols-4 gap-6 text-center">
             {/* Stat 1 */}
             <div>
-              <h3 className="text-2xl md:text-3xl font-bold">5K+</h3>
+              <h3 className="text-2xl md:text-3xl text-gray-500 font-light">5K+</h3>
               <p className="text-gray-600 text-sm md:text-base">Active Members</p>
             </div>
 
             {/* Stat 2 */}
             <div>
-              <h3 className="text-2xl md:text-3xl font-bold">20+</h3>
+              <h3 className="text-2xl md:text-3xl text-gray-500 font-light">20+</h3>
               <p className="text-gray-600 text-sm md:text-base">Events Organized</p>
             </div>
 
             {/* Stat 3 */}
             <div>
-              <h3 className="text-2xl md:text-3xl font-bold">10+</h3>
+              <h3 className="text-2xl md:text-3xl text-gray-500 font-light">10+</h3>
               <p className="text-gray-600 text-sm md:text-base">Colleges Reached</p>
             </div>
 
             {/* Stat 4 */}
             <div>
-              <h3 className="text-2xl md:text-3xl font-bold">10K+</h3>
+              <h3 className="text-2xl md:text-3xl text-gray-500 font-light">10K+</h3>
               <p className="text-gray-600 text-sm md:text-base">Volunteer Hours</p>
             </div>
           </div>
