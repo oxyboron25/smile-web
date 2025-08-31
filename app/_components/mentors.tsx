@@ -3,7 +3,10 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 
 const MentorsSection: React.FC = () => {
   return (
-    <section className="bg-[#001612] text-white flex flex-col items-center px-4 py-16">
+    <section
+      id="mentors" // 👈 add this so we can link to it
+      className="bg-[#001612] text-white flex flex-col items-center px-4 py-16"
+    >
       {/* Heading */}
       <div className="text-center max-w-4xl mb-14">
         <h2 className="text-4xl md:text-6xl font-normal mb-4">
@@ -20,7 +23,7 @@ const MentorsSection: React.FC = () => {
         {/* Mentor Image */}
         <div className="flex-shrink-0 w-48 h-48 md:w-72 md:h-72 rounded-lg overflow-hidden bg-gray-300">
           <img
-            src="/mentor.png" // replace with actual image path
+            src="/mentor.png"
             alt="Sharad Aggarwal"
             className="w-full h-full object-cover"
           />
@@ -47,7 +50,6 @@ const MentorsSection: React.FC = () => {
           <div className="flex items-center justify-between pb-10 mt-4">
             <button className="flex items-center gap-2 bg-black text-white text-lg md:text-lg px-5 py-3 rounded-xl hover:opacity-80 transition">
               Read More
-              {/* Replace this with your arrow image */}
               <img src="/new/Group 40056.png" alt="arrow" className="w-8 h-8" />
             </button>
 
@@ -67,4 +69,5 @@ const MentorsSection: React.FC = () => {
 };
 
 export default MentorsSection;
+
 
