@@ -6,17 +6,18 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 const memberSchema = z.object({
     role: z.string().min(1, "Select a role"),
+    customRole: z.string().optional(),
     name: z.string().min(1, "Please enter a name"),
     email: z.string().email("Enter a valid email"),
     phone: z
         .string()
         .regex(/^[0-9]+$/, "Only numbers are allowed")
         .min(10, "Please enter a valid contact number"),
-
     linkedin: z.string().url("Please enter a valid LinkedIn profile"),
     discipline: z.string().min(1, "Please select one option"),
     study: z.string().min(1, "Please select one option"),
 });
+
 
 const schema = z.object({
     university: z.string().min(1, "Please enter a valid university name"),
@@ -82,10 +83,10 @@ export default function Form() {
         resolver: zodResolver(schema),
         defaultValues: {
             foundingMembers: [
-                { role: "", name: "", email: "", phone: "", linkedin: "", discipline: "", study: "" },
-                { role: "", name: "", email: "", phone: "", linkedin: "", discipline: "", study: "" },
-                { role: "", name: "", email: "", phone: "", linkedin: "", discipline: "", study: "" },
-                { role: "", name: "", email: "", phone: "", linkedin: "", discipline: "", study: "" },
+                { role: "", customRole: "", name: "", email: "", phone: "", linkedin: "", discipline: "", study: "" },
+                { role: "", customRole: "", name: "", email: "", phone: "", linkedin: "", discipline: "", study: "" },
+                { role: "", customRole: "", name: "", email: "", phone: "", linkedin: "", discipline: "", study: "" },
+                { role: "", customRole: "", name: "", email: "", phone: "", linkedin: "", discipline: "", study: "" },
             ],
         },
     });
@@ -141,7 +142,7 @@ export default function Form() {
                         phone_number: "+91" + m.phone,
                         linkedin: m.linkedin,
                     },
-                    role: roleMap[m.role] || m.role,
+                    role: roleMap[m.role] || m.customRole || m.role,
                     current_level_of_study: studyMap[m.study] || m.study,
                     discipline: m.discipline,
                     resume: null, // update later if you want file uploads
@@ -416,7 +417,7 @@ export default function Form() {
                                                     value={role}
                                                     {...register(`foundingMembers.${index}.role`)}
                                                     className="accent-[#3ECF8E]"
-                                                    disabled={isTaken}   // 🚨 Disable if role already taken
+                                                    disabled={isTaken && role !== "President"}
                                                 />
                                                 <span className={isTaken ? "line-through text-gray-500" : ""}>
                                                     {role}
@@ -425,7 +426,19 @@ export default function Form() {
                                         );
                                     })}
 
+                                    <label className="flex items-center gap-2">
+
+                                        <input
+                                            type="text"
+                                            {...register(`foundingMembers.${index}.customRole`)}
+                                            placeholder="Custom role"
+                                            className="ml-3 p-2 rounded border-2 border-[#6F5252] bg-transparent text-white placeholder-white"
+                                        />
+                                    </label>
                                 </div>
+
+
+
                                 {errors.foundingMembers?.[index]?.role && (
                                     <p className="text-red-500 text-sm mt-1">
                                         {errors.foundingMembers[index]?.role?.message as string}
@@ -455,72 +468,87 @@ export default function Form() {
 
                             {/* Phone + LinkedIn + Discipline */}
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                <div className="relative w-full">
+                                <div className="flex flex-col">
+
+                                    <div className="realtive w-full">
+
+                                        <input
+                                            type="tel"
+                                            {...register(`foundingMembers.${index}.phone`, {
+                                                pattern: {
+                                                    value: /^[0-9]+$/,
+                                                    message: "Only numbers are allowed",
+                                                },
+                                            })}
+                                            placeholder="Contact Number*"
+                                            onInput={(e) => {
+                                                e.currentTarget.value = e.currentTarget.value.replace(/[^0-9]/g, "");
+                                            }}
+                                            className={`w-full p-2 pr-10 rounded border-2 ${errors.foundingMembers?.[index]?.phone
+                                                ? "border-red-500"
+                                                : "border-[#6F5252]"
+                                                } bg-transparent text-white placeholder-white`}
+                                        />
+
+                                        {/* Phone SVG Icon on the right side */}
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 512 512"
+                                            className="absolute right-5 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white pointer-events-none"
+                                            fill="currentColor"
+                                        >
+                                            <path d="M426.7,453.8l-38.1-79.1c-8.2-16.9-18.8-29.2-37.1-21.7l-36.1,13.4c-28.9,13.4-43.3,0-57.8-20.2l-65-147.9
+      c-8.2-16.9-3.9-32.8,14.4-40.3l50.5-20.2c18.3-7.6,15.4-23.4,7.2-40.3l-43.3-80.6c-8.2-16.9-25-21-43.3-13.5
+      c-36.6,15.1-66.9,38.8-86.6,73.9c-24,42.9-12,102.6-7.2,127.7c4.8,25.1,21.6,69.1,43.3,114.2c21.7,45.2,40.7,80.7,57.8,100.8
+      c17,20.1,57.8,75.1,108.3,87.4c41.4,10,86.1,1.6,122.7-13.5C434.8,486.7,434.8,470.8,426.7,453.8z" />
+                                        </svg>
+
+                                    </div>
+
+                                    {/* Error Message */}
+                                    {errors.foundingMembers?.[index]?.phone && (
+                                        <p className="text-red-500 text-sm mt-1">
+                                            {errors.foundingMembers[index]?.phone?.message as string}
+                                        </p>
+                                    )}
+
+                                </div>
+
+
+                                <div className="flex flex-col">
+
                                     <input
-                                        type="tel"
-                                        {...register(`foundingMembers.${index}.phone`, {
-                                            pattern: {
-                                                value: /^[0-9]+$/,
-                                                message: "Only numbers are allowed",
-                                            },
-                                        })}
-                                        placeholder="Contact Number*"
-                                        onInput={(e) => {
-                                            e.currentTarget.value = e.currentTarget.value.replace(/[^0-9]/g, "");
-                                        }}
-                                        className={`w-full p-2 pr-10 rounded border-2 ${errors.foundingMembers?.[index]?.phone
+                                        {...register(`foundingMembers.${index}.linkedin`)}
+                                        placeholder="LinkedIn*"
+                                        className={`w-full p-2 rounded border-2 ${errors.foundingMembers?.[index]?.linkedin
                                             ? "border-red-500"
                                             : "border-[#6F5252]"
                                             } bg-transparent text-white placeholder-white`}
                                     />
-
-                                    {/* Phone SVG Icon on the right side */}
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 512 512"
-                                        className="absolute right-5 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white pointer-events-none"
-                                        fill="currentColor"
-                                    >
-                                        <path d="M426.7,453.8l-38.1-79.1c-8.2-16.9-18.8-29.2-37.1-21.7l-36.1,13.4c-28.9,13.4-43.3,0-57.8-20.2l-65-147.9
-      c-8.2-16.9-3.9-32.8,14.4-40.3l50.5-20.2c18.3-7.6,15.4-23.4,7.2-40.3l-43.3-80.6c-8.2-16.9-25-21-43.3-13.5
-      c-36.6,15.1-66.9,38.8-86.6,73.9c-24,42.9-12,102.6-7.2,127.7c4.8,25.1,21.6,69.1,43.3,114.2c21.7,45.2,40.7,80.7,57.8,100.8
-      c17,20.1,57.8,75.1,108.3,87.4c41.4,10,86.1,1.6,122.7-13.5C434.8,486.7,434.8,470.8,426.7,453.8z" />
-                                    </svg>
+                                    {/* Error Message */}
+                                    {errors.foundingMembers?.[index]?.linkedin && (
+                                        <p className="text-red-500 text-sm mt-1">
+                                            {errors.foundingMembers[index]?.linkedin?.message as string}
+                                        </p>
+                                    )}
                                 </div>
+                                <div className="flex flex-col">
 
-                                {/* Error Message */}
-                                {errors.foundingMembers?.[index]?.phone && (
-                                    <p className="text-red-500 text-sm mt-1">
-                                        {errors.foundingMembers[index]?.phone?.message as string}
-                                    </p>
-                                )}
-
-
-
-
-                                <input
-                                    {...register(`foundingMembers.${index}.linkedin`)}
-                                    placeholder="LinkedIn*"
-                                    className={`w-full p-2 rounded border-2 ${errors.foundingMembers?.[index]?.linkedin
-                                        ? "border-red-500"
-                                        : "border-[#6F5252]"
-                                        } bg-transparent text-white placeholder-white`}
-                                />
-
-                                {/* Discipline (as input instead of select) */}
-                                <input
-                                    {...register(`foundingMembers.${index}.discipline`)}
-                                    placeholder="Discipline*"
-                                    className={`w-full p-2 rounded border-2 ${errors.foundingMembers?.[index]?.discipline
-                                        ? "border-red-500"
-                                        : "border-[#6F5252]"
-                                        } bg-transparent text-white placeholder-white`}
-                                />
-                                {errors.foundingMembers?.[index]?.discipline && (
-                                    <p className="text-red-500 text-sm mt-1">
-                                        {errors.foundingMembers[index]?.discipline?.message as string}
-                                    </p>
-                                )}
+                                    {/* Discipline (as input instead of select) */}
+                                    <input
+                                        {...register(`foundingMembers.${index}.discipline`)}
+                                        placeholder="Discipline*"
+                                        className={`w-full p-2 rounded border-2 ${errors.foundingMembers?.[index]?.discipline
+                                            ? "border-red-500"
+                                            : "border-[#6F5252]"
+                                            } bg-transparent text-white placeholder-white`}
+                                    />
+                                    {errors.foundingMembers?.[index]?.discipline && (
+                                        <p className="text-red-500 text-sm mt-1">
+                                            {errors.foundingMembers[index]?.discipline?.message as string}
+                                        </p>
+                                    )}
+                                </div>
 
                             </div>
 
