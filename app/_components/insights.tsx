@@ -69,22 +69,22 @@ export default function InsightsSection() {
                 <img
                   src="/new/Group 10 4 (1).png"
                   alt="Symbol 1"
-                  className="w-14 h-20 md:h-24 md:w-24 object-contain"
+                  className="w-20 h-28 lg:h-28 lg:w-32 object-contain"
                 />
                 <img
                   src="/new/Group 10 5.png"
                   alt="Symbol 2"
-                  className="w-14 h-20 md:h-24 md:w-24 object-contain"
+                  className="w-20 h-28  lg:h-28 lg:w-32 object-contain"
                 />
                 <img
                   src="/new/Group 10 4 (1).png"
                   alt="Symbol 3"
-                  className="w-14 h-20 md:h-24 md:w-24 object-contain"
+                  className="w-20 h-28 lg:h-28 lg:w-32 object-contain"
                 />
                 <img
                   src="/new/Group 10 5.png"
                   alt="Symbol 4"
-                  className="w-14 h-20 md:h-24 md:w-24 object-contain"
+                  className="w-20 h-28 lg:h-28 lg:w-32 object-contain"
                 />
               </div>
             </div>
