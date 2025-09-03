@@ -5,7 +5,7 @@ export default function StudentsMoveSection() {
     <section className="w-full">
       <div className="grid grid-cols-1 md:grid-cols-[50%_50%]">
         {/* LEFT SIDE (text + ribbons) */}
-        <div className="bg-[#001612] flex flex-col justify-center items-start py-10 px-6 md:pl-16 md:ml-16 md:py-16">
+        <div className="bg-[#001612] flex flex-col justify-center items-start py-10 px-6 md:pl-16 lg:ml-16 md:py-16">
           <div className="flex flex-row items-start md:items-center ml-24 md:ml-0">
             {/* MOVE THE WORLD text */}
             <div className="flex flex-col text-left">
@@ -27,23 +27,23 @@ export default function StudentsMoveSection() {
             </div>
 
             {/* Ribbons */}
-            <div className="flex flex-col space-y-4 md:space-y-6 mt-9 -ml-8 md:-ml-20">
+            <div className="flex flex-col space-y-4 md:space-y-6 lg:mt-3 mt-9 -ml-8 md:-ml-20">
               <img
                 src="/new/Group 10 5.png"
                 alt="Ribbon Icon"
-                className="w-10 h-16 md:w-16 md:h-32"
+                className="w-10 h-16 md:w-16 md:h-36"
               />
               <img
                 src="/new/Group 10 5.png"
                 alt="Ribbon Icon"
-                className="w-10 h-16 md:w-16 md:h-32"
+                className="w-10 h-16 md:w-16 md:h-36"
               />
             </div>
           </div>
         </div>
 
         {/* RIGHT SIDE */}
-        <div className="bg-[#132E31] text-[#D6E8E6] flex flex-col justify-center py-10 px-6 md:px-12 space-y-6 text-sm md:text-lg leading-relaxed relative">
+        <div className="bg-[#132E31] text-[#D6E8E6] text-center md:text-left flex flex-col justify-center py-10 px-6 md:px-12 space-y-6 text-sm md:text-lg leading-relaxed relative">
           <p className="md:mr-20">
             Born from our own struggles, SMILE is building a generation of
             leaders to end mental health stigma. With 170,000 suicides annually

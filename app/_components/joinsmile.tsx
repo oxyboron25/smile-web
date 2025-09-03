@@ -10,8 +10,8 @@ const JoinSmileSection: React.FC = () => {
                         ml-0 sm:ml-8 lg:ml-16"> {/* ✅ remove margin on small screens */}
           
           {/* Title */}
-          <div className="text-center sm:text-left"> {/* ✅ center only on mobile */}
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl text-white leading-tight">
+          <div className="text-center lg:text-left"> {/* ✅ center only on mobile */}
+            <h2 className="text-2xl sm:text-3xl  lg:text-4xl text-white leading-tight">
               Join SMILE
             </h2>
             <p className="text-3xl sm:text-4xl lg:text-5xl italic mt-1 text-[#98F3D9]">

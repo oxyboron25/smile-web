@@ -27,11 +27,28 @@ const GlobalNetworks: React.FC = () => {
       {/* Map Section */}
       <div className="relative mt-8 w-full flex justify-center">
         <img
-          src="/new/Group 40079.png"
+          src="/new/map.png"
           alt="World Map"
           className="w-full max-w-5xl min-w-[300px] min-h-[200px] aspect-[16/9] object-contain"
         />
       </div>
+      <div>
+        <p className="text-white text-center text-4xl mt-12">Our Global Presence</p>
+        
+      </div>
+        <div className="flex gap-20 items-center text-2xl justify-center mt-10 text-white">
+      {/* Present */}
+      <div className="flex items-center gap-2">
+        <span className="w-8 h-8 rounded-full border-2 border-white bg-[#4EBCA5]/40"></span>
+        <span>Present</span>
+      </div>
+
+      {/* Coming Soon */}
+      <div className="flex items-center gap-2">
+        <span className="w-8 h-8 rounded-full border-2 border-white bg-cyan-400/40"></span>
+        <span>Coming Soon</span>
+      </div>
+    </div>
     </section>
   );
 };
