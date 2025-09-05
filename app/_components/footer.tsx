@@ -7,7 +7,8 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#001612] text-white py-10 px-6 flex flex-col items-center space-y-6">
+   <section id="footer">
+     <footer className="bg-[#001612] text-white py-10 px-6 flex flex-col items-center space-y-6">
       {/* Logo */}
       <div>
         <img src="/new/logo.png" alt="SMILE Logo" className="h-20 w-auto" />
@@ -29,6 +30,7 @@ const Footer = () => {
         </a>
       </div>
     </footer>
+   </section>
   );
 };
 

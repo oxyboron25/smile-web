@@ -21,7 +21,7 @@ const MentorsSection: React.FC = () => {
       {/* Mentor Card */}
       <div className="bg-[#132E31] rounded-xl w-full max-w-7xl flex flex-col md:flex-row items-center p-8 md:p-10 gap-8 shadow-xl">
         {/* Mentor Image */}
-        <div className="flex-shrink-0 w-48 h-48 md:w-72 md:h-72 rounded-lg overflow-hidden bg-gray-300">
+        <div className="flex-shrink-0 w-48 h-48 md:w-72 md:h-72 rounded-lg overflow-hidden bg-[#E1D7CE]">
           <img
             src="/mentor.png"
             alt="Sharad Aggarwal"

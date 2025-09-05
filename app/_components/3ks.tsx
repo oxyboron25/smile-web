@@ -18,7 +18,7 @@ export default function SmileMethodology() {
 
           {/* Right: Subheading */}
           <div>
-            <p className="text-lg md:text-xl leading-relaxed">
+            <p className="text-lg md:text-xl ml-11 leading-relaxed">
               A symbiotic network of{" "}
               <span className="text-[#7ED5C9] ">students</span>,{" "}
               <span className="text-[#7ED5C9] ">founders</span>, and{" "}
