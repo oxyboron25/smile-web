@@ -9,7 +9,7 @@ export default function StudentsMoveSection() {
           <div className="flex flex-row items-start md:items-center ml-24 md:ml-0">
             {/* MOVE THE WORLD text */}
             <div className="flex flex-col text-left">
-              <h2 className="text-3xl md:text-7xl font-light italic text-[#7ED5C9] leading-tight">
+              <h2 className="text-3xl md:text-7xl  font-light italic text-[#7ED5C9] leading-tight">
                 STUDENTS
               </h2>
               <h2 className="text-3xl md:text-7xl mt-2 md:mt-3 md:pt-6 text-white font-light leading-tight">

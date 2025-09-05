@@ -32,6 +32,12 @@ const Navbar = () => {
               About Us
             </Link>
           </span>
+          <span className="cursor-pointer text-[16px] hover:text-gray-300">
+            <Link href="#footer" scroll={true}>
+              Contact Us
+            </Link>
+          </span>
+          
         </div>
         {/* Desktop Button */}
         <button className="hidden md:flex bg-white text-black rounded-xl px-5 py-2 text-[18px] font-light items-center gap-1 hover:bg-gray-200 transition">

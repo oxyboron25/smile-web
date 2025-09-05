@@ -36,7 +36,7 @@ const FounderStories: React.FC = () => {
           <img
             src="/new/Group 40063 (1).png"
             alt="Founder"
-            className="rounded-lg w-3/4 sm:w-2/3 md:w-full max-w-[250px] md:max-w-full h-auto bg-[#7D7D7D] object-cover"
+            className="rounded-lg w-3/4 sm:w-2/3 md:w-full max-w-[250px] md:max-w-full h-auto bg-[#E1D7CE] object-cover"
           />
         </div>
 

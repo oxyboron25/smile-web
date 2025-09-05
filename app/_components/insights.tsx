@@ -8,8 +8,8 @@ export default function InsightsSection() {
         <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left mb-6">
           {/* Left: Heading */}
           <div>
-            <h2 className="text-6xl font-light mb-2">Stay Updated</h2>
-            <p className="text-5xl italic text-teal-400">Insights from SMILE</p>
+            <h2 className="text-6xl font-light ml-2 mb-2">Stay Updated</h2>
+            <p className="text-5xl italic ml-2 text-teal-400">Insights from SMILE</p>
           </div>
 
           {/* Right: Subheading */}
