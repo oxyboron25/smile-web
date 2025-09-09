@@ -20,6 +20,12 @@ const Footer = () => {
         <a href="#" className="hover:text-gray-300">The Network</a>
         <a href="#" className="hover:text-gray-300">Explore Mental Health</a>
         <a href="#" className="hover:text-gray-300">About Us</a>
+        <Link
+            href="/contact"
+            className="cursor-pointer text-[20px] hover:text-gray-300"
+          >
+            Contact Us
+          </Link>
         <Link href="/form" target="_blank" className="hover:text-gray-300">Start a Chapter ↗</Link>
       </div>
 

@@ -8,6 +8,7 @@
 
 html, body {
     margin: 0px 0px 0px 0px;
+    scroll-behavior: smooth;
 }
 
 ::-webkit-scrollbar {
@@ -19,6 +20,18 @@ html, body {
 ::-webkit-scrollbar-thumb {
     background-color: #5DA399;
     border-radius: 50px;
+}
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
 }
 
 
