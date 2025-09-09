@@ -1,9 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
 import Link from "next/link";
 
+/* ---------------- NAVBAR ---------------- */
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  // Dropdown state
+  const [networkOpen, setNetworkOpen] = useState(false);
+  const [exploreOpen, setExploreOpen] = useState(false);
+  const closeTimeoutRef = useRef<any>(null);
+
+  const openDropdown = (setter: React.Dispatch<React.SetStateAction<boolean>>) => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+    setter(true);
+  };
+
+  const closeDropdown = (setter: React.Dispatch<React.SetStateAction<boolean>>) => {
+    if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
+    closeTimeoutRef.current = setTimeout(() => {
+      setter(false);
+      closeTimeoutRef.current = null;
+    }, 200); // changed from 200 → 300ms
+  };
+
+  useEffect(() => {
+    return () => {
+      if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
+    };
+  }, []);
+
   return (
     <nav className="sticky top-0 z-50 bg-[#001612] text-white py-2 px-4 sm:px-6 md:px-16">
       <div className="flex justify-between items-center max-w-screen-2xl mx-auto ml-2 md:ml-16 mr-2 md:mr-20">
@@ -15,30 +44,93 @@ const Navbar = () => {
             className="h-9 sm:h-8 md:h-10 lg:h-12 w-auto"
           />
         </div>
+
         {/* Desktop Links */}
-        <div className="hidden md:flex space-x-6 lg:space-x-10 font-medium">
-          <div className="flex items-center text-[16px] space-x-1 hover:text-gray-300">
-            <Link href="#mentors" scroll={true}>
-              The Network
-            </Link>
-            <ChevronDown className="w-4 h-4" />
+        <div className="hidden md:flex space-x-6 lg:space-x-10 font-medium relative">
+          {/* Network Dropdown */}
+          <div
+            className="relative"
+            onMouseEnter={() => openDropdown(setNetworkOpen)}
+            onMouseLeave={() => closeDropdown(setNetworkOpen)}
+            onFocus={() => openDropdown(setNetworkOpen)}
+            onBlur={() => closeDropdown(setNetworkOpen)}
+            tabIndex={-1}
+          >
+            <div className="flex items-center text-[16px] space-x-1 cursor-pointer hover:text-gray-300">
+              <span>The Network</span>
+              <ChevronDown className="w-4 h-4" />
+            </div>
+            {networkOpen && (
+              <div className="absolute left-0 top-full mt-2 bg-[#001612] border border-gray-700 rounded-lg shadow-lg py-2 w-44">
+                <Link
+                  href="/network/india"
+                  className="block px-4 py-2 hover:bg-gray-800"
+                >
+                  India
+                </Link>
+                <Link
+                  href="/network/us"
+                  className="block px-4 py-2 hover:bg-gray-800"
+                >
+                  US
+                </Link>
+              </div>
+            )}
           </div>
-          <div className="flex items-center text-[16px] space-x-1 cursor-pointer hover:text-gray-300">
-            <span>Explore Mental Health</span>
-            <ChevronDown className="w-4 h-4" />
+
+          {/* Explore Mental Health Dropdown */}
+          <div
+            className="relative"
+            onMouseEnter={() => openDropdown(setExploreOpen)}
+            onMouseLeave={() => closeDropdown(setExploreOpen)}
+            onFocus={() => openDropdown(setExploreOpen)}
+            onBlur={() => closeDropdown(setExploreOpen)}
+            tabIndex={-1}
+          >
+            <div className="flex items-center text-[16px] space-x-1 cursor-pointer hover:text-gray-300">
+              <span>Explore Mental Health</span>
+              <ChevronDown className="w-4 h-4" />
+            </div>
+            {exploreOpen && (
+              <div className="absolute left-0 top-full mt-2 bg-[#001612] border border-gray-700 rounded-lg shadow-lg py-2 w-52">
+                <Link
+                  href="/explore/startups"
+                  className="block px-4 py-2 hover:bg-gray-800"
+                >
+                  Startups
+                </Link>
+                <Link
+                  href="/explore/blogs"
+                  className="block px-4 py-2 hover:bg-gray-800"
+                >
+                  Blogs
+                </Link>
+                <Link
+                  href="/explore/mentors"
+                  className="block px-4 py-2 hover:bg-gray-800"
+                >
+                  Our Mentors
+                </Link>
+              </div>
+            )}
           </div>
+
+          {/* About Us */}
           <span className="cursor-pointer text-[16px] hover:text-gray-300">
             <Link href="#founders" scroll={true}>
               About Us
             </Link>
           </span>
-          <span className="cursor-pointer text-[16px] hover:text-gray-300">
-            <Link href="#footer" scroll={true}>
-              Contact Us
-            </Link>
-          </span>
-          
+
+          {/* Contact */}
+          <Link
+            href="/contact"
+            className="cursor-pointer text-[16px] hover:text-gray-300"
+          >
+            Contact Us
+          </Link>
         </div>
+
         {/* Desktop Button */}
         <button className="hidden md:flex bg-white text-black rounded-xl px-5 py-2 text-[18px] font-light items-center gap-1 hover:bg-gray-200 transition">
           <Link href="/form" target="_blank" rel="noopener noreferrer">
@@ -50,6 +142,7 @@ const Navbar = () => {
             />
           </Link>
         </button>
+
         {/* Mobile Hamburger */}
         <div className="md:hidden flex items-center">
           <button
@@ -60,20 +153,56 @@ const Navbar = () => {
           </button>
         </div>
       </div>
+
       {/* Mobile Menu */}
       {mobileOpen && (
         <div className="md:hidden bg-[#001612] px-5 pb-5 mt-3 text-center space-y-6 sm:space-y-8">
-          <Link
-            href="#mentors"
-            scroll={true}
-            className="block text-base hover:text-gray-300"
-          >
-            The Network
-          </Link>
-          <span className="block text-base hover:text-gray-300">
-            Explore Mental Health
-          </span>
+          {/* Network Dropdown in Mobile */}
+          <div>
+            <span className="block text-base mb-2">The Network</span>
+            <div className="space-y-2">
+              <Link
+                href="/network/india"
+                className="block text-sm hover:text-gray-300"
+              >
+                India
+              </Link>
+              <Link
+                href="/network/us"
+                className="block text-sm hover:text-gray-300"
+              >
+                US
+              </Link>
+            </div>
+          </div>
+
+          {/* Explore Mental Health Dropdown in Mobile */}
+          <div>
+            <span className="block text-base mb-2">Explore Mental Health</span>
+            <div className="space-y-2">
+              <Link
+                href="/explore/startups"
+                className="block text-sm hover:text-gray-300"
+              >
+                Startups
+              </Link>
+              <Link
+                href="/explore/blogs"
+                className="block text-sm hover:text-gray-300"
+              >
+                Blogs
+              </Link>
+              <Link
+                href="/explore/mentors"
+                className="block text-sm hover:text-gray-300"
+              >
+                Our Mentors
+              </Link>
+            </div>
+          </div>
+
           <span className="block text-base hover:text-gray-300">About Us</span>
+
           <Link
             href="/form"
             target="_blank"
@@ -88,6 +217,7 @@ const Navbar = () => {
   );
 };
 
+/* ---------------- HERO ---------------- */
 const Hero = () => {
   return (
     <section className="bg-[#001612] text-white px-5 sm:px-6 md:px-16 pt-8 sm:pt-10 md:pt-20 pb-8 md:pb-0">
@@ -126,6 +256,7 @@ const Hero = () => {
   );
 };
 
+/* ---------------- HOMEPAGE ---------------- */
 const Homepage = () => {
   return (
     <div className="bg-[#001612] min-h-full md:min-h-screen pt-[3vh] pb-0 md:pt-[2vh] md:pb-0">
@@ -136,5 +267,12 @@ const Homepage = () => {
 };
 
 export default Homepage;
+
+
+
+
+
+
+
 
 
