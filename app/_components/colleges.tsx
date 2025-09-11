@@ -1,11 +1,12 @@
 import React from "react";
+import Link from "next/link";
 
 const JoinSmile: React.FC = () => {
   // Card data
   const cards = [
     { title: "IIT BOMBAY", img: "/new/image 69 (2).png", btn: "Coming Soon 🡥" },
-    { title: "DTU", img: "/new/dtu.png", btn: "Read More 🡥" },
-    { title: "BITS PILANI", img: "/new/image 70 (3).png", btn: "Read More 🡥" },
+    { title: "DTU", img: "/new/dtu.png", btn: "Read More 🡥", link: "/network#dtu" },
+    { title: "BITS PILANI", img: "/new/image 70 (3).png", btn: "Read More 🡥", link: "/network#pilani" },
     { title: "UCLA", img: "/new/The_University_of_California_UCLA 1 (1).png", btn: "Coming Soon 🡥" },
     { title: "Yale University", img: "/new/YALE (1).png", btn: "Coming Soon 🡥" },
     { title: "Stanford University", img: "/new/image 21 (1).png", btn: "Coming Soon 🡥" },
@@ -62,12 +63,25 @@ const JoinSmile: React.FC = () => {
                 <h3 className="text-base sm:text-lg font-semibold text-center flex-grow flex items-center justify-center">
                   {card.title}
                 </h3>
-                <button
-                  style={{ backgroundColor: btnBg }}
-                  className="text-white rounded-xl px-3 sm:px-4 py-1.5 sm:py-2 mt-4 text-xs sm:text-sm"
-                >
-                  {card.btn}
-                </button>
+
+                {/* If card has a link → wrap in <Link>, else just show a disabled button */}
+                {card.link ? (
+                  <Link
+                    href={card.link}
+                    className="text-white rounded-xl px-3 sm:px-4 py-1.5 sm:py-2 mt-4 text-xs sm:text-sm text-center block"
+                    style={{ backgroundColor: btnBg }}
+                  >
+                    {card.btn}
+                  </Link>
+                ) : (
+                  <button
+                    style={{ backgroundColor: btnBg }}
+                    className="text-white rounded-xl px-3 sm:px-4 py-1.5 sm:py-2 mt-4 text-xs sm:text-sm"
+                    disabled
+                  >
+                    {card.btn}
+                  </button>
+                )}
               </div>
             );
           })}
@@ -95,6 +109,7 @@ const JoinSmile: React.FC = () => {
 };
 
 export default JoinSmile;
+
 
 
 

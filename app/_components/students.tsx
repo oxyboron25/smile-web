@@ -2,7 +2,7 @@ import React from "react";
 
 export default function StudentsMoveSection() {
   return (
-    <section className="w-full">
+    <section id="aboutus" className="w-full">
       <div className="grid grid-cols-1 md:grid-cols-[50%_50%]">
         {/* LEFT SIDE (text + ribbons) */}
         <div className="bg-[#001612] flex flex-col justify-center items-start py-10 px-6 md:pl-16 lg:ml-16 md:py-16">
