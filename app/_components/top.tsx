@@ -24,7 +24,7 @@ const Navbar = () => {
     closeTimeoutRef.current = setTimeout(() => {
       setter(false);
       closeTimeoutRef.current = null;
-    }, 200); // changed from 200 → 300ms
+    }, 200);
   };
 
   useEffect(() => {
@@ -63,13 +63,13 @@ const Navbar = () => {
             {networkOpen && (
               <div className="absolute left-0 top-full mt-2 bg-[#001612] border border-gray-700 rounded-lg shadow-lg py-2 w-44">
                 <Link
-                  href="/network/india"
+                  href="/network#dtu"
                   className="block px-4 py-2 hover:bg-gray-800"
                 >
-                  India
+                  INDIA
                 </Link>
                 <Link
-                  href="/network/us"
+                  href=""
                   className="block px-4 py-2 hover:bg-gray-800"
                 >
                   US
@@ -117,7 +117,7 @@ const Navbar = () => {
 
           {/* About Us */}
           <span className="cursor-pointer text-[16px] hover:text-gray-300">
-            <Link href="#founders" scroll={true}>
+            <Link href="#aboutus" scroll={true}>
               About Us
             </Link>
           </span>
@@ -162,13 +162,13 @@ const Navbar = () => {
             <span className="block text-base mb-2">The Network</span>
             <div className="space-y-2">
               <Link
-                href="/network/india"
+                href="/network#dtu"
                 className="block text-sm hover:text-gray-300"
               >
-                India
+                INDIA
               </Link>
               <Link
-                href="/network/us"
+                href=""
                 className="block text-sm hover:text-gray-300"
               >
                 US
@@ -201,7 +201,14 @@ const Navbar = () => {
             </div>
           </div>
 
-          <span className="block text-base hover:text-gray-300">About Us</span>
+          <Link
+  href="#aboutus"
+  scroll={true}
+  className="block text-base hover:text-gray-300"
+>
+  About Us
+</Link>
+
 
           <Link
             href="/form"
@@ -267,6 +274,7 @@ const Homepage = () => {
 };
 
 export default Homepage;
+
 
 
 

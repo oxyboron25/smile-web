@@ -3,14 +3,14 @@ import React from "react";
 const JoinSmileSection: React.FC = () => {
   return (
     <section className="bg-[#121212] text-gray-900 py-10 sm:py-12 lg:py-16 px-6 sm:px-10 lg:px-16">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-stretch">
         
         {/* LEFT SECTION */}
         <div className="flex flex-col gap-6 sm:gap-8 justify-start 
-                        ml-0 sm:ml-8 lg:ml-16"> {/* ✅ remove margin on small screens */}
+                        ml-0 sm:ml-8 lg:ml-16 h-full">
           
           {/* Title */}
-          <div className="text-center lg:text-left"> {/* ✅ center only on mobile */}
+          <div className="text-center lg:text-left">
             <h2 className="text-2xl sm:text-3xl  lg:text-4xl text-white leading-tight">
               Join SMILE
             </h2>
@@ -22,7 +22,7 @@ const JoinSmileSection: React.FC = () => {
           {/* Card 1 */}
           <div className="flex flex-col sm:flex-row items-center bg-white rounded-xl p-4 gap-4 relative">
             {/* IMAGE */}
-            <div className="w-full sm:w-1/2 aspect-[4/3] min-w-[160px] min-h-[120px] relative">
+            <div className="w-full h-full sm:w-1/2 aspect-[4/3] min-w-[160px] min-h-[120px] relative">
               <img
                 src="/new/Adobe Express - file (1) 1 (2).png"
                 alt="Activities"
@@ -77,7 +77,7 @@ const JoinSmileSection: React.FC = () => {
         </div>
 
         {/* RIGHT SECTION */}
-        <div className="flex flex-col gap-6 sm:gap-8 justify-start mr-0 sm:mr-8 lg:mr-16">
+        <div className="flex flex-col gap-6 sm:gap-8 justify-between mr-0 sm:mr-8 lg:mr-16 h-full">
           {/* Description */}
           <div className="text-center lg:text-right text-white text-sm sm:text-base lg:text-lg leading-relaxed mt-2">
             A symbiotic network of students, founders,
@@ -88,7 +88,7 @@ const JoinSmileSection: React.FC = () => {
           </div>
 
           {/* Card 4 */}
-          <div className="bg-white rounded-xl p-4 relative flex flex-col gap-3">
+          <div className="bg-white rounded-xl p-4 relative flex flex-col gap-3 flex-1">
             <div className="aspect-[16/9] min-w-[180px] min-h-[140px] relative">
               <img
                 src="/new/Adobe Express - file 1 (1).png"
@@ -113,6 +113,7 @@ const JoinSmileSection: React.FC = () => {
 };
 
 export default JoinSmileSection;
+
 
 
 
