@@ -20,29 +20,30 @@ const JoinSmileSection: React.FC = () => {
           </div>
 
           {/* Card 1 */}
-          <div className="flex flex-col sm:flex-row items-center bg-white rounded-xl p-4 gap-4 relative">
-            {/* IMAGE */}
-            <div className="w-full h-full sm:w-1/2 aspect-[4/3] min-w-[160px] min-h-[120px] relative">
-              <img
-                src="/new/Adobe Express - file (1) 1 (2).png"
-                alt="Activities"
-                className="w-full h-full object-cover rounded-lg"
-              />
-              <button className="absolute bottom-3 right-3 w-10 h-10 flex items-center justify-center">
-                <img src="/new/Group 40058.png" alt="arrow" className="w-8 h-8" />
-              </button>
-            </div>
+         <div className="flex flex-col sm:flex-row items-center bg-white rounded-xl relative">
+  {/* IMAGE */}
+  <div className="w-full sm:w-1/2 aspect-[4/3] min-w-[160px] min-h-[120px] relative">
+    <img
+      src="/new/Adobe Express - file (1) 1 (2).png"
+      alt="Activities"
+      className="w-full h-full object-cover rounded-l-xl sm:rounded-l-xl sm:rounded-tr-none sm:rounded-br-none bg-[#d9d9d9]"
+    />
+    <button className="absolute bottom-3 right-3 w-10 h-10 flex items-center justify-center">
+      <img src="/new/Group 40058.png" alt="arrow" className="w-8 h-8" />
+    </button>
+  </div>
 
-            {/* TEXT */}
-            <div className="flex-1 flex flex-col justify-center relative pr-0 sm:pr-10 mt-3 sm:mt-0">
-              <h3 className="text-lg sm:text-xl font-semibold text-center sm:text-left">
-                Browse our <i>activities</i>
-              </h3>
-              <p className="text-gray-700 mt-2 text-sm sm:text-base text-center sm:text-left">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-              </p>
-            </div>
-          </div>
+  {/* TEXT */}
+  <div className="flex-1 flex flex-col justify-center p-4 pr-0 sm:pr-10">
+    <h3 className="text-lg sm:text-xl font-semibold text-center sm:text-left">
+      Browse our <i>activities</i>
+    </h3>
+    <p className="text-gray-700 mt-2 text-sm sm:text-base text-center sm:text-left">
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+    </p>
+  </div>
+</div>
+
 
           {/* Row: Mentor + Chapter */}
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
@@ -88,24 +89,30 @@ const JoinSmileSection: React.FC = () => {
           </div>
 
           {/* Card 4 */}
-          <div className="bg-white rounded-xl p-4 relative flex flex-col gap-3 flex-1">
-            <div className="aspect-[16/9] min-w-[180px] min-h-[140px] relative">
-              <img
-                src="/new/Adobe Express - file 1 (1).png"
-                alt="Join SMILE"
-                className="w-full h-full object-cover rounded-lg"
-              />
-              <button className="absolute bottom-3 right-3 w-10 h-10 flex items-center justify-center">
-                <img src="/new/Group 40056.png" alt="arrow" className="w-8 h-8" />
-              </button>
-            </div>
-            <h3 className="text-lg sm:text-xl font-normal text-center sm:text-left">
-              Leading from the front: Join <i>SMILE</i>
-            </h3>
-            <p className="text-gray-700 text-sm sm:text-base text-center sm:text-left">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-            </p>
-          </div>
+          <div className="bg-white rounded-xl relative flex flex-col flex-1">
+  {/* Image should go here without padding */}
+  <div className="aspect-[16/9] min-w-[180px] min-h-[140px] relative">
+    <img
+      src="/new/Adobe Express - file 1 (1).png"
+      alt="Join SMILE"
+      className="w-full h-full object-cover rounded-t-xl bg-[#3a3939]"
+    />
+    <button className="absolute bottom-3 right-3 w-10 h-10 flex items-center justify-center">
+      <img src="/new/Group 40056.png" alt="arrow" className="w-8 h-8" />
+    </button>
+  </div>
+
+  {/* Content part with padding */}
+  <div className="p-4 flex flex-col gap-3 flex-1">
+    <h3 className="text-lg sm:text-xl font-normal text-center sm:text-left">
+      Leading from the front: Join <i>SMILE</i>
+    </h3>
+    <p className="text-gray-700 text-sm sm:text-base text-center sm:text-left">
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+    </p>
+  </div>
+</div>
+
         </div>
       </div>
     </section>
