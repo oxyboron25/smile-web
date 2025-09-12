@@ -11,7 +11,7 @@ interface Mentor {
 
 const mentors: Mentor[] = [
   {
-    image: "/mentor.png",
+    image: "/new/sharad.jpg",
     name: "MR. SHARAD AGGARWAL",
     role: "Global Head - Strategy, Partnerships & AI Solutions at Google Cloud",
     quote:
@@ -19,7 +19,7 @@ const mentors: Mentor[] = [
     quoteHighlight: "aligning strategy with empathy",
   },
   {
-    image: "/mentor2.png",
+    image: "/new/drkriss.jpg",
     name: "ADV. DR KRISS VENUGOPAL",
     role: "Clinical hypnotherapist, Legal Scholar and Voics Coach",
     quote:
@@ -27,7 +27,7 @@ const mentors: Mentor[] = [
     quoteHighlight: "law, therapy and education",
   },
   {
-    image: "/mentor3.png",
+    image: "/new/shmanish.jpg",
     name: "Sh. MANISH K AGARWAL",
     role: "Special Commissioner- Delhi Police",
     quote:

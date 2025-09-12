@@ -10,21 +10,21 @@ interface Founder {
 
 const founders: Founder[] = [
   {
-    image: "/new/Group 40063 (1).png",
+    image: "/new/image 18.png",
     role: "Co-Founder",
     name: "NAVIN VENKAT",
     quote:
       "“I only grasped the importance of mental health in my third year of college. I wanted to make sure that no-one went through the struggles I did.”",
   },
   {
-    image: "/new/Group 40063 (1).png",
+    image: "/new/Manav.webp",
     role: "Co-Founder",
     name: "MANAV KANOI",
     quote:
       "““Building community is at the heart of everything. I believe in shared strength and supporting each other through challenges.”",
   },
   {
-    image: "/new/Group 40063 (1).png",
+    image: "/new/ritien 1.png",
     role: "Co-Founder",
     name: "RITIEN MOHAN",
     quote:
