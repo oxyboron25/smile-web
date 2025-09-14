@@ -133,7 +133,7 @@ const Navbar = () => {
 
         {/* Desktop Button */}
         <button className="hidden md:flex bg-white text-black rounded-xl px-5 py-2 text-[18px] font-light items-center gap-1 hover:bg-gray-200 transition">
-          <Link href="/form" target="_blank" rel="noopener noreferrer">
+          <Link href="/start-your-own-chapter" target="_blank" rel="noopener noreferrer">
             Start a Chapter
             <img
               src="/new/Group 40058.png"
@@ -211,7 +211,7 @@ const Navbar = () => {
 
 
           <Link
-            href="/form"
+            href="/start-your-own-chapter"
             target="_blank"
             rel="noopener noreferrer"
             className="mt-6 block bg-white text-black rounded-lg px-5 py-2 text-base font-light hover:bg-gray-200 transition"
@@ -245,7 +245,7 @@ const Hero = () => {
         {/* Button */}
         <div className="flex justify-center md:justify-start mt-6 sm:mt-8 md:mt-8">
           <Link
-            href="/form"
+            href="/start-your-own-chapter"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-white text-black rounded-xl px-5 py-2 sm:px-6 sm:py-2 sm:text-base md:px-6 md:py-3 md:text-[18px] font-light flex items-center justify-center gap-1 hover:bg-gray-200 transition"
