@@ -10,6 +10,8 @@ import HeroSection from "./HeroSection";
 import UniversityDetails from "./UniversityDetails";
 import PointOfContact from "./PointOfContact";
 import FoundingMembers from "./FoundingMembers";
+import UploadsSection from "./UploadSection";
+import ChapterDeclaration from "./ChapterDeclaration";
 
 
 export default function Form() {
@@ -127,66 +129,9 @@ export default function Form() {
 
 
 			{/* File Uploads */}
-			
+			<UploadsSection register={register} errors={errors} />
 			{/* Chapter Plan + Declaration */}
-			<section className="mt-10 space-y-10">
-				{/* Chapter Plan */}
-				<div>
-					<textarea
-						rows={6}
-						{...register("uploads.chapterPlan")}
-						className={`w-full rounded-xl border ${errors.uploads?.chapterPlan ? "border-red-500" : "border-gray-400"
-							} bg-gray-700/50 text-white placeholder-gray-300 px-4 py-3 focus:ring-2 focus:ring-[#3ECF8E] focus:border-[#3ECF8E] outline-none`}
-						placeholder="Chapter Plan*"
-					></textarea>
-					{errors.uploads?.chapterPlan && (
-						<p className="text-red-500 text-sm mt-1">
-							{errors.uploads?.chapterPlan.message}
-						</p>
-					)}
-				</div>
-
-				{/* Declaration */}
-				<div>
-					<label className="text-white font-small">Declaration of truthfulness*</label>
-					<div className="flex items-start gap-3 mt-1">
-						<input
-							type="checkbox"
-							{...register("uploads.declaration")}
-							className="mt-1 accent-[#3ECF8E]"
-						/>
-						<span className="text-[#7ED7CA]">
-							I declare that the information provided is true and accurate to the
-							best of my knowledge.
-						</span>
-					</div>
-					{errors.uploads?.declaration && (
-						<p className="text-red-500 text-sm mt-1">{errors.uploads?.declaration.message}</p>
-					)}
-				</div>
-
-				{/* Consent */}
-				<section className="mt-10 space-y-10"></section>
-				<div>
-					<label className="text-white font-small">Consent*</label>
-					<div className="flex items-start gap-3 mt-1">
-						<input
-							type="checkbox"
-							{...register("uploads.consent")}
-							className="mt-1 accent-[#3ECF8E]"
-						/>
-						<span className="text-[#7ED7CA]">
-							I consent to having my information processed by SMILE and shared with
-							SMILE’s members and/or partners. Your data will be used to process
-							your request, generate statistics, and promote SMILE, its members, and
-							partners.
-						</span>
-					</div>
-					{errors.uploads?.consent && (
-						<p className="text-red-500 text-sm mt-1">{errors.uploads?.consent.message}</p>
-					)}
-				</div>
-			</section>
+			<ChapterDeclaration register={register} errors={errors} />
 
 
 			{/* Submit */}
