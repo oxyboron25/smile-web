@@ -48,7 +48,7 @@ export default function UniversityDetails({ register, errors, control }: Props) 
 								className={`p-2 rounded border-2 border-[#6F5252] ${errors.university?.state ? "border-red-500" : "border-[#6F5252]"
 									} bg-transparent placeholder-white`}
 							>
-								<option value="" className="text-black">State*</option>
+								<option value="" className="text-black">State (optional)</option>
 								<option value="Delhi" className="text-black">Delhi</option>
 								<option value="Maharashtra" className="text-black">Maharashtra</option>
 								<option value="Karnataka" className="text-black">Karnataka</option>
@@ -63,7 +63,7 @@ export default function UniversityDetails({ register, errors, control }: Props) 
 						<div className="flex flex-col">
 							<input
 								{...register("university.pincode")}
-								placeholder="Pincode*"
+								placeholder="Pincode (optional)"
 								className={`w-full p-2 rounded border-2 ${errors.university?.pincode ? "border-red-500" : "border-[#6F5252]"
 									} bg-transparent text-white placeholder-white`}
 							/>
