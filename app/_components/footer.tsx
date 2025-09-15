@@ -26,7 +26,7 @@ const Footer = () => {
           >
             Contact Us
           </Link>
-        <Link href="/form" target="_blank" className="hover:text-gray-300">Start a Chapter ↗</Link>
+        <Link href="/start-your-own-chapter" target="_blank" className="hover:text-gray-300">Start a Chapter ↗</Link>
       </div>
 
       {/* Social Icons */}
