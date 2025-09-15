@@ -3,7 +3,7 @@ import React from "react";
 const StatsSection: React.FC = () => {
   return (
     <section
-      className="pt-0 pb-6 mt-12 md:-mt-24" // move down on small screens, keep large screen pull-up
+      className="pt-0 pb-6 mt-20 md:-mt-24" // move down on small screens, keep large screen pull-up
       style={{
         background: "linear-gradient(to bottom, #001612 50%, #132E31 50%)",
       }}

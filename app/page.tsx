@@ -19,6 +19,9 @@ import InsightsSection from "./_components/insights";
 import Faqs from "./_components/faqs";
 import Footer from "./_components/footer";
 import Link from "next/link"; // ✅ import for button
+import Navbar from "./_components/navbar1";
+import Hero from "./_components/landing";
+import StatsSection from "./_components/box";
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
@@ -43,8 +46,9 @@ export default function Home() {
 
   return (
     <main className="bg-[#001612] h-fit w-[100vw] relative">
-      <Homepage />
-      <StatsBox />
+      <Navbar />
+      <Hero/>
+      <StatsSection/>
       <StigmaSection />
       <BannerImage />
       <StudentsMoveSection />
