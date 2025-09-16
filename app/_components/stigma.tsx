@@ -4,7 +4,7 @@ const StatsSection = () => {
   return (
     <section className="bg-[#132E31] text-white px-4 sm:px-6 md:px-12 lg:px-20 py-12 md:py-16">
       {/* Text Content */}
-      <div className="space-y-6 sm:space-y-8 max-w-8xl mx-auto lg:ml-16 lg:mr-12 text-lg sm:text-xl md:text-2xl lg:text-3xl leading-relaxed tracking-wide text-center md:text-left">
+      <div className="space-y-6 sm:space-y-8 max-w-8xl mx-auto lg:ml-12 lg:mr-16 text-lg sm:text-xl md:text-2xl lg:text-3xl leading-relaxed tracking-wide text-center md:text-left">
         <p className="mt-10 sm:mt-12 md:mt-16">
           The <span className="italic">stigma</span> around mental health is an{" "}
           <span className="italic">entrenched institutional problem</span>, especially in

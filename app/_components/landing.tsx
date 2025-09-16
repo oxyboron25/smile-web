@@ -19,7 +19,7 @@ const Hero = () => {
         </p>
 
         {/* Button */}
-        <div className="flex justify-center md:justify-start mt-6 sm:mt-8 md:mt-8 mb-40">
+        <div className="flex justify-center md:justify-start mt-6 sm:mt-8 md:mt-8 mb-12 md:mb-40">
           <Link
             href="/start-your-own-chapter/"
             target="_blank"
@@ -40,4 +40,5 @@ const Hero = () => {
 };
 
 export default Hero;
+
 

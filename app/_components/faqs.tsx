@@ -12,7 +12,7 @@ const Faqs: React.FC = () => {
   return (
     <section className="bg-[#121212] text-white py-16 px-6 lg:px-24">
       {/* Heading */}
-      <div className="text-center lg:text-left lg:ml-16 mb-12">
+      <div className="text-center lg:text-left lg:ml-9 mb-12">
         <h2 className="text-5xl font-light">FAQs</h2>
         <p className="italic text-5xl font-light text-gray-300">
           All about SMILE
@@ -20,7 +20,7 @@ const Faqs: React.FC = () => {
       </div>
 
       {/* FAQ List */}
-      <div className="space-y-6 text-center lg:text-left lg:ml-16">
+      <div className="space-y-6 text-center lg:text-left lg:ml-10">
         {faqs.map((item, index) => (
           <div
             key={index}
