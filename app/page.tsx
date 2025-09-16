@@ -18,7 +18,7 @@ import GlobalNetworks from "./_components/map";
 import InsightsSection from "./_components/insights";
 import Faqs from "./_components/faqs";
 import Footer from "./_components/footer";
-import Link from "next/link"; // ✅ import for button
+import Link from "next/link"; 
 import Navbar from "./_components/navbar1";
 import Hero from "./_components/landing";
 import StatsSection from "./_components/box";
@@ -29,7 +29,7 @@ export default function Home() {
   useEffect(() => {
     const lenis = new Lenis({
       smoothWheel: true,
-      lerp: 0.1, // smaller = smoother
+      lerp: 0.1, 
     });
 
     function raf(time: number) {
@@ -40,7 +40,7 @@ export default function Home() {
     requestAnimationFrame(raf);
 
     return () => {
-      lenis.destroy(); // cleanup
+      lenis.destroy(); 
     };
   }, []);
 
@@ -64,7 +64,7 @@ export default function Home() {
 
       {/* ✅ Floating Button */}
       <Link
-        href="/start-your-own-chapter" target="_blank" rel="noopener noreferrer" // change route or form link
+        href="/start-your-own-chapter" target="_blank" rel="noopener noreferrer" 
         className="fixed bottom-6 right-6 bg-white text-black px-5 py-2 text-[18px] font-light rounded-xl shadow-lg hover:bg-gray-200 transition-colors z-50"
       >
         Start a Chapter

@@ -110,7 +110,7 @@ const Navbar = () => {
 
         {/* Desktop Button */}
         <button className="hidden md:flex bg-white text-black rounded-xl px-5 py-2 text-[18px] font-light items-center gap-1 hover:bg-gray-200 transition">
-          <Link href="/form" target="_blank" rel="noopener noreferrer">
+          <Link href="/start-your-own-chapter" target="_blank" rel="noopener noreferrer">
             Start a Chapter
             <img src="/new/Group 40058.png" alt="arrow image" className="h-7 w-7 inline-block" />
           </Link>
@@ -149,7 +149,7 @@ const Navbar = () => {
           <Link href="#aboutus" scroll={true} className="block text-base hover:text-gray-300">About Us</Link>
 
           <Link
-            href="/form"
+            href="/start-your-own-chapter/"
             target="_blank"
             rel="noopener noreferrer"
             className="mt-6 block bg-white text-black rounded-lg px-5 py-2 text-base font-light hover:bg-gray-200 transition"

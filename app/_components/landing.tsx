@@ -21,7 +21,7 @@ const Hero = () => {
         {/* Button */}
         <div className="flex justify-center md:justify-start mt-6 sm:mt-8 md:mt-8 mb-40">
           <Link
-            href="/form"
+            href="/start-your-own-chapter/"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-white text-black rounded-xl px-5 py-2 sm:px-6 sm:py-2 sm:text-base md:px-6 md:py-3 md:text-[18px] font-light flex items-center justify-center gap-1 hover:bg-gray-200 transition"
