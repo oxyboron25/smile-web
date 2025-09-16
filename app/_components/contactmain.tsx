@@ -25,10 +25,10 @@ export default function ContactMain() {
           <div>
             <h2 className="text-lg text-white font-semibold mb-2">Follow Us</h2>
             <div className="flex space-x-4">
-              <a href="#" className="text-white hover:text-gray-400">
+              <a href="https://www.linkedin.com/company/society-for-mental-health-inclusivity-literacy-empowerment" className="text-white hover:text-gray-400">
                 LinkedIn
               </a>
-              <a href="#" className="text-white hover:text-gray-400">
+              <a href="https://www.instagram.com/we.spread.smiles/following/?hl=en" className="text-white hover:text-gray-400">
                 Instagram
               </a>
             </div>
