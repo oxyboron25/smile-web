@@ -62,18 +62,7 @@ export default function Home() {
       <Faqs />
       <Footer />
 
-      {/* ✅ Floating Button */}
-      <Link
-        href="/start-your-own-chapter" target="_blank" rel="noopener noreferrer" 
-        className="fixed bottom-6 right-6 bg-white text-black px-5 py-2 text-[18px] font-light rounded-xl shadow-lg hover:bg-gray-200 transition-colors z-50"
-      >
-        Start a Chapter
-        <img
-              src="/new/Group 40058.png"
-              alt="arrow image"
-              className="h-7 w-7 inline-block"
-            />
-      </Link>
+      
     </main>
   );
 }

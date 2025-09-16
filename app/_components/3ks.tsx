@@ -18,7 +18,7 @@ export default function SmileMethodology() {
 
           {/* Right: Subheading */}
           <div>
-            <p className="text-lg md:text-xl ml-11 leading-relaxed">
+            <p className="text-lg md:text-xl leading-relaxed text-center md:text-left">
               A symbiotic network of{" "}
               <span className="text-[#7ED5C9] ">students</span>,{" "}
               <span className="text-[#7ED5C9] ">founders</span>, and{" "}
@@ -36,7 +36,7 @@ export default function SmileMethodology() {
               <img
                 src="/pic1.png"
                 alt="Professional Mentors"
-                className="w-full h-56 object-cover"
+                className="w-full h-56 object-cover mx-auto"
               />
               <img
                 src="/new/Group 40058.png"
@@ -45,11 +45,12 @@ export default function SmileMethodology() {
               />
             </div>
             <div className="mt-4">
-              <p className="text-lg max-w-2xl">
+              <p className="text-lg max-w-2xl mx-auto md:mx-0">
                 <span className="font-semibold text-[#7ED5C9]">
                   Professional mentors
                 </span>{" "}
-                amplify impact, open doors to wider networks, and help drive lasting cultural change.
+                amplify impact, open doors to wider networks, and help drive
+                lasting cultural change.
               </p>
             </div>
           </div>
@@ -60,7 +61,7 @@ export default function SmileMethodology() {
               <img
                 src="/pic2.png"
                 alt="Founders"
-                className="w-full h-56 object-cover"
+                className="w-full h-56 object-cover mx-auto"
               />
               <img
                 src="/new/Group 40058.png"
@@ -69,9 +70,10 @@ export default function SmileMethodology() {
               />
             </div>
             <div className="mt-4">
-              <p className="text-lg max-w-2xl">
+              <p className="text-lg max-w-2xl mx-auto md:mx-0">
                 <span className="font-semibold text-[#7ED5C9]">Founders</span>{" "}
-                gain mentorship, valuable customer feedback, and connections to refine and scale their solutions.
+                gain mentorship, valuable customer feedback, and connections to
+                refine and scale their solutions.
               </p>
             </div>
           </div>
@@ -82,7 +84,7 @@ export default function SmileMethodology() {
               <img
                 src="/pic3.png"
                 alt="Students"
-                className="w-full h-56 object-cover"
+                className="w-full h-56 object-cover mx-auto"
               />
               <img
                 src="/new/Group 40058.png"
@@ -91,9 +93,10 @@ export default function SmileMethodology() {
               />
             </div>
             <div className="mt-4">
-              <p className="text-lg max-w-2xl">
+              <p className="text-lg max-w-2xl mx-auto md:mx-0">
                 <span className="font-semibold text-[#7ED5C9]">Students</span>{" "}
-                gain affordable resources, and the support they need to lead change in their communities.
+                gain affordable resources, and the support they need to lead
+                change in their communities.
               </p>
             </div>
           </div>
@@ -102,4 +105,5 @@ export default function SmileMethodology() {
     </section>
   );
 }
+
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 interface Mentor {
   image: string;
@@ -7,6 +8,7 @@ interface Mentor {
   role: string;
   quote: string;
   quoteHighlight: string;
+  slug: string;
 }
 
 const mentors: Mentor[] = [
@@ -17,22 +19,34 @@ const mentors: Mentor[] = [
     quote:
       "I believe real impact stems from aligning strategy with empathy. SMILE’s mission to nurture youth mental wellness and leadership resonates deeply with my values.",
     quoteHighlight: "aligning strategy with empathy",
+    slug: "sharad-aggarwal",
   },
   {
     image: "/new/drkriss.jpg",
     name: "ADV. DR KRISS VENUGOPAL",
-    role: "Clinical hypnotherapist, Legal Scholar and Voics Coach",
+    role: "Clinical hypnotherapist, Legal Scholar and Voice Coach",
     quote:
       "As someone working at the intersection of law, therapy and education, I believe real change begins by empowering students with the right tools and support.",
     quoteHighlight: "law, therapy and education",
+    slug: "kriss-venugopal",
   },
   {
     image: "/new/shmanish.jpg",
     name: "Sh. MANISH K AGARWAL",
     role: "Special Commissioner- Delhi Police",
     quote:
-      "In my 30 years as a Police Officer, I've seen how stress and mental health challenges impact performance, resillience and well being. ",
-    quoteHighlight: "performance, resillience and well being",
+      "In my 30 years as a Police Officer, I've seen how stress and mental health challenges impact performance, resilience and well being. ",
+    quoteHighlight: "performance, resilience and well being",
+    slug: "manish-agarwal",
+  },
+  {
+    image: "/new/quincy.jpg",
+    name: "QUINCY X. BROWN",
+    role: "Biochemist, Educator and Community Builder",
+    quote:
+      "By creating free, public spaces through MQ Chess Club, I’ve seen how strategy, patience, and adaptability can heal, connect, and empower communities worldwide.",
+    quoteHighlight: "heal, connect, and empower",
+    slug: "quincy-brown",
   },
 ];
 
@@ -47,13 +61,13 @@ const MentorsSection: React.FC = () => {
     setCurrent((prev) => (prev === mentors.length - 1 ? 0 : prev + 1));
   };
 
-  // Auto slide every 3s
+  // ✅ Auto-slide across all mentors
   useEffect(() => {
     const interval = setInterval(() => {
-      handleNext();
+      setCurrent((prev) => (prev === mentors.length - 1 ? 0 : prev + 1));
     }, 3000);
     return () => clearInterval(interval);
-  }, []);
+  }, [mentors.length]);
 
   return (
     <section className="bg-[#001612] text-white flex flex-col items-center px-4 py-16 overflow-hidden">
@@ -70,16 +84,12 @@ const MentorsSection: React.FC = () => {
 
       {/* Carousel Wrapper */}
       <div className="relative w-full max-w-7xl overflow-hidden">
-        {/* Slider */}
         <div
           className="flex transition-transform duration-700 ease-in-out"
           style={{ transform: `translateX(-${current * 100}%)` }}
         >
           {mentors.map((mentor, idx) => (
-            <div
-              key={idx}
-              className="w-full flex-shrink-0 px-4 md:px-8"
-            >
+            <div key={idx} className="w-full flex-shrink-0 px-4 md:px-8">
               <div className="bg-[#132E31] rounded-xl flex flex-col md:flex-row items-center p-8 md:p-10 gap-8 shadow-xl">
                 {/* Mentor Image */}
                 <div className="flex-shrink-0 w-48 h-48 md:w-72 md:h-72 rounded-lg overflow-hidden bg-gray-300">
@@ -116,10 +126,14 @@ const MentorsSection: React.FC = () => {
 
                   {/* Bottom Row */}
                   <div className="flex items-center justify-between pb-10 mt-4">
-                    <button className="flex items-center gap-2 bg-black text-white text-lg md:text-lg px-5 py-3 rounded-xl hover:opacity-80 transition">
+                    {/* Read More button */}
+                    <Link
+                      href="/mentors"
+                      className="flex items-center gap-2 bg-black text-white text-lg md:text-lg px-5 py-3 rounded-xl hover:opacity-80 transition"
+                    >
                       Read More
                       <ArrowRight size={28} className="ml-1" />
-                    </button>
+                    </Link>
 
                     <div className="flex gap-3">
                       <button
@@ -165,6 +179,8 @@ const MentorsSection: React.FC = () => {
 };
 
 export default MentorsSection;
+
+
 
 
 

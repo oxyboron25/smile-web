@@ -6,27 +6,50 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [networkOpen, setNetworkOpen] = useState(false);
   const [exploreOpen, setExploreOpen] = useState(false);
-  const closeTimeoutRef = useRef<any>(null);
 
-  const openDropdown = (setter: React.Dispatch<React.SetStateAction<boolean>>) => {
-    if (closeTimeoutRef.current) {
-      clearTimeout(closeTimeoutRef.current);
-      closeTimeoutRef.current = null;
+  // separate timers for each dropdown (so they don't cancel each other)
+  const networkCloseTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const exploreCloseTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Network handlers
+  const openNetworkDropdown = () => {
+    if (networkCloseTimeoutRef.current) {
+      clearTimeout(networkCloseTimeoutRef.current);
+      networkCloseTimeoutRef.current = null;
     }
-    setter(true);
+    setNetworkOpen(true);
   };
 
-  const closeDropdown = (setter: React.Dispatch<React.SetStateAction<boolean>>) => {
-    if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
-    closeTimeoutRef.current = setTimeout(() => {
-      setter(false);
-      closeTimeoutRef.current = null;
+  const closeNetworkDropdown = () => {
+    if (networkCloseTimeoutRef.current) clearTimeout(networkCloseTimeoutRef.current);
+    networkCloseTimeoutRef.current = setTimeout(() => {
+      setNetworkOpen(false);
+      networkCloseTimeoutRef.current = null;
     }, 200);
   };
 
+  // Explore handlers
+  const openExploreDropdown = () => {
+    if (exploreCloseTimeoutRef.current) {
+      clearTimeout(exploreCloseTimeoutRef.current);
+      exploreCloseTimeoutRef.current = null;
+    }
+    setExploreOpen(true);
+  };
+
+  const closeExploreDropdown = () => {
+    if (exploreCloseTimeoutRef.current) clearTimeout(exploreCloseTimeoutRef.current);
+    exploreCloseTimeoutRef.current = setTimeout(() => {
+      setExploreOpen(false);
+      exploreCloseTimeoutRef.current = null;
+    }, 200);
+  };
+
+  // cleanup on unmount
   useEffect(() => {
     return () => {
-      if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
+      if (networkCloseTimeoutRef.current) clearTimeout(networkCloseTimeoutRef.current);
+      if (exploreCloseTimeoutRef.current) clearTimeout(exploreCloseTimeoutRef.current);
     };
   }, []);
 
@@ -44,13 +67,18 @@ const Navbar = () => {
 
         {/* Desktop Links */}
         <div className="hidden md:flex space-x-6 lg:space-x-10 font-medium relative">
+          {/* Home */}
+          <Link href="/" className="cursor-pointer text-[16px] hover:text-gray-300">
+            Home
+          </Link>
+
           {/* Network Dropdown */}
           <div
             className="relative"
-            onMouseEnter={() => openDropdown(setNetworkOpen)}
-            onMouseLeave={() => closeDropdown(setNetworkOpen)}
-            onFocus={() => openDropdown(setNetworkOpen)}
-            onBlur={() => closeDropdown(setNetworkOpen)}
+            onMouseEnter={openNetworkDropdown}
+            onMouseLeave={closeNetworkDropdown}
+            onFocus={openNetworkDropdown}
+            onBlur={closeNetworkDropdown}
             tabIndex={-1}
           >
             <div className="flex items-center text-[16px] space-x-1 cursor-pointer hover:text-gray-300">
@@ -72,10 +100,10 @@ const Navbar = () => {
           {/* Explore Dropdown */}
           <div
             className="relative"
-            onMouseEnter={() => openDropdown(setExploreOpen)}
-            onMouseLeave={() => closeDropdown(setExploreOpen)}
-            onFocus={() => openDropdown(setExploreOpen)}
-            onBlur={() => closeDropdown(setExploreOpen)}
+            onMouseEnter={openExploreDropdown}
+            onMouseLeave={closeExploreDropdown}
+            onFocus={openExploreDropdown}
+            onBlur={closeExploreDropdown}
             tabIndex={-1}
           >
             <div className="flex items-center text-[16px] space-x-1 cursor-pointer hover:text-gray-300">
@@ -127,6 +155,9 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {mobileOpen && (
         <div className="md:hidden bg-[#001612] px-5 pb-5 mt-3 text-center space-y-6 sm:space-y-8">
+          {/* Home */}
+          <Link href="/" className="block text-base hover:text-gray-300">Home</Link>
+
           {/* Network Dropdown */}
           <div>
             <span className="block text-base mb-2">The Network</span>
@@ -148,6 +179,8 @@ const Navbar = () => {
 
           <Link href="#aboutus" scroll={true} className="block text-base hover:text-gray-300">About Us</Link>
 
+          <Link href="/contact" className="block text-base hover:text-gray-300">Contact Us</Link>
+
           <Link
             href="/start-your-own-chapter/"
             target="_blank"
@@ -163,3 +196,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
