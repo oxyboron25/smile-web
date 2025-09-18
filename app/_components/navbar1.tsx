@@ -173,7 +173,7 @@ const Navbar = () => {
             <div className="space-y-2">
               <Link href="/explore/startups" className="block text-sm hover:text-gray-300">Startups</Link>
               <Link href="/explore/blogs" className="block text-sm hover:text-gray-300">Blogs</Link>
-              <Link href="/explore/mentors" className="block text-sm hover:text-gray-300">Our Mentors</Link>
+              <Link href="/mentors" className="block text-sm hover:text-gray-300">Our Mentors</Link>
             </div>
           </div>
 
