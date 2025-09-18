@@ -118,7 +118,7 @@ const Navbar = () => {
                 <Link href="/explore/blogs" className="block px-4 py-2 hover:bg-gray-800">
                   Blogs
                 </Link>
-                <Link href="/explore/mentors" className="block px-4 py-2 hover:bg-gray-800">
+                <Link href="/mentors" className="block px-4 py-2 hover:bg-gray-800">
                   Our Mentors
                 </Link>
               </div>
