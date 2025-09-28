@@ -12,10 +12,12 @@ type UploadsSectionProps = {
 export default function UploadsSection({ register, errors }: UploadsSectionProps) {
   return (
     <section className="space-y-4">
-      <h2 className="text-lg text-center text-black bg-[#7ED7CA] p-2 rounded">
+      {/* Section Title */}
+      <h2 className="text-lg text-center text-white bg-[#1E1E1E] border border-[#6F5252] p-2 rounded-md">
         Uploads
       </h2>
 
+      {/* File Upload Fields */}
       <FileUploadField
         label="Proof of University Affiliation"
         name="uploads.proof"
@@ -24,7 +26,7 @@ export default function UploadsSection({ register, errors }: UploadsSectionProps
         required
       />
 
-      {/* Add more fields easily */}
+      {/* Future fields */}
       {/* <FileUploadField
         label="Team Logo"
         name="uploads.logo"

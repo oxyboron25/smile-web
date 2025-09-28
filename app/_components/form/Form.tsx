@@ -5,7 +5,7 @@ import { useForm, useFieldArray, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import countryDialCodes from "./constants/countryDialCodes";
 import { roleMap, studyMap } from "./constants/mappings";
-import { formSchema, FormData } from "./schemas";
+import { formSchema, type FormData } from "./schemas";
 import HeroSection from "./HeroSection";
 import UniversityDetails from "./UniversityDetails";
 import PointOfContact from "./PointOfContact";
@@ -72,28 +72,79 @@ export default function Form() {
     },
   });
 
-  // Submit handler
-  const onSubmit = async (data: FormData) => {
-    setSubmitting(true);
-    try {
-      const payload = mapFormDataToPayload(data);
-      const res = await fetch("https://smile-forms.onrender.com", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      if (!res.ok) throw new Error("Failed to submit");
-      const result = await res.json();
-      toast.success("✅ Submitted successfully!");
-      console.log(result);
-    } catch (err) {
-      toast.error("❌ Submission failed. Please try again.");
-      console.error(err);
-    } finally {
-      setSubmitting(false);
-    }
-  };
+  // Submission handler
+const onSubmit = async (data: FormData) => {
+  setSubmitting(true);
+  try {
+    // Build the payload without files
+    const payload = {
+      university: {
+        name: data.university.university,
+        address: data.university.address,
+        state: data.university.state,
+        pin_code: data.university.pincode,
+        website: data.university.website,
+        country: data.university.country,
+      },
+      point_of_contact: {
+        contact: {
+          name: data.contact.name,
+          email: data.contact.email,
+          phone_number: phoneCode ? `${phoneCode}${data.contact.phone}` : data.contact.phone,
+          linkedin: data.contact.linkedin,
+        },
+      },
+      founding_members: data.foundingMembers.map((member) => ({
+        contact: {
+          name: member.name,
+          email: member.email,
+          phone_number: phoneCode ? `${phoneCode}${member.phone}` : member.phone,
+          linkedin: member.linkedin,
+        },
+        role: roleMap[member.role] || member.customRole || member.role,
+        current_level_of_study: studyMap[member.study] || member.study,
+        discipline: member.discipline,
+      })),
+    };
 
+    // Create FormData
+    const formData = new FormData();
+    formData.append("data", JSON.stringify(payload));
+
+    // Attach files in a type-safe way
+    data.foundingMembers.forEach((member, idx) => {
+      const filesMap: { [key: string]: FileList | undefined } = {
+        resume: member.resume,
+        proof_of_association: member.proof_of_association,
+      };
+
+      Object.entries(filesMap).forEach(([key, fileList]) => {
+        if (fileList && fileList.length > 0) {
+          formData.append(`founding_members[${idx}][${key}]`, fileList[0]);
+        }
+      });
+    });
+
+    // Submit request
+    const res = await fetch("https://smile-forms.onrender.com/forms/create", {
+      method: "POST",
+      body: formData, // ✅ do not set Content-Type manually
+    });
+
+    if (!res.ok) throw new Error("Failed to submit");
+    const result = await res.json();
+    toast.success("✅ Submitted successfully!");
+    console.log(result);
+  } catch (err) {
+    toast.error("❌ Submission failed. Please try again.");
+    console.error(err);
+  } finally {
+    setSubmitting(false);
+  }
+};
+
+
+ 
   return (
     <>
       <Toaster position="top-right" />
