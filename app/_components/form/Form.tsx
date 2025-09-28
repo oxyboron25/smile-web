@@ -169,7 +169,7 @@ const onSubmit = async (data: FormData) => {
           phoneCode={phoneCode}
         />
 
-        <UploadsSection register={register} errors={errors} />
+        <UploadsSection control={control}register={register} errors={errors} />
 
         <ChapterDeclaration register={register} errors={errors} />
 
