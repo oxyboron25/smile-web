@@ -10,7 +10,7 @@ export default function HeroSection() {
       </div>
       <p className="p-10 text-center text-gray-300 border-2 border-[#2F5D56]">
         SMILE (Society for Mental Health Inclusivity, Literacy, &
-        Empowerment)...
+        Empowerment)
       </p>
     </>
   );
